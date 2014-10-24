@@ -1,0 +1,436 @@
+/*@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+*/
+
+#event_container{
+    color: white;
+    position: absolute;
+    top: 1380px;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    overflow: hidden;
+    min-width: 1200px;
+}
+
+.ev_sideline{
+    position: relative;
+    color: white;
+    width: 25px;
+    height: 80%;
+    top: 200px;
+    left: 66px;
+    border-left: 1px solid rgba(64, 131, 216, 0.5);
+
+}
+
+.ev_sideline>img{
+    position: absolute;
+    top: -220px;
+    width: 25px;
+    margin-left: -13px;
+    height: 220px;
+}
+
+.icon_genre_holder{
+    height: 80%;
+    margin-top: 60px;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-left: 1px solid rgba(64, 131, 216, 0.5);
+    border-top: 1px solid rgba(64, 131, 216, 0.5);
+    border-bottom: 1px solid rgba(64, 131, 216, 0.5);
+
+}
+
+.icon_genre_holder span{
+    cursor: pointer;
+    position: absolute;
+    margin-left: -120px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Trebuchet MS;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    width: 0px;
+    overflow: hidden;
+    text-align: right;
+}
+
+div[class$=genre_container]{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-top: 20px;
+    margin-left: -18px;
+    max-height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border: solid black 2px;
+    box-shadow: rgba(64, 131, 216, 0.8) 0px 0px 0px 2px;
+}
+
+.genre_container{
+    background: linear-gradient(180deg, rgba(65, 255, 255, 0.75), rgba(64, 131, 216, 0.5));
+}
+
+.select_genre_container{
+    background: linear-gradient(#aaa, #fff);   
+}
+
+
+img.genre_img{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.genre_container:hover span{
+    cursor: pointer;
+    width: 110px;
+    transition: all 0.3s ease-in-out;
+}
+
+.select_genre_container span{
+    cursor: pointer;
+    width: 110px;
+    transition: all 0.3s ease-in-out;
+}
+
+#event-sideline-filler{
+    height: 100%;
+    margin-left: -1px;
+    border-left: 1px solid rgba(64, 131, 216, 0.5);
+}
+
+/*------------------------------------------------*/
+
+.mid_container_genre{
+    height: 0px;
+    overflow: hidden;
+    width: 0px;
+    opacity: 0;
+    z-index: -20;
+}
+
+.mid_container_genre_selected{
+    display: flex;
+    height: 90%;
+    width: 80%;
+    opacity: 1;
+    padding-left: 15%;
+    min-height: 660px;
+    flex-grow: 3;
+}
+
+.mid_container_genre_selected, .mid_container_genre{
+    flex-direction: column;
+    justify-content: space-around;
+    align-self: flex-start;
+    margin-top: 20px;
+    transition: opacity 0.5s ease;
+}
+
+div[class^=event-matter]{
+    background: rgba(37,37,37,0.37);
+    padding: 15px;
+    height: 220px;
+    overflow: auto;
+    line-height: 1.25;
+    font-family: armata;
+    width: 90%;
+}
+
+.event-matter{
+    display: none;
+    transition: all 0.6s ease;
+}
+
+.event-matter-selected{
+    display: block;
+    transition: all 0.6s ease;
+}
+
+div[id^=event_info]{
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    transition: opacity 0.6s ease;
+    /*transition: height 1s ease;*/
+}
+
+.event_container{
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.event_container_selected{
+    min-height: 500px;
+    height: 100%;
+    display: flex;
+    opacity: 1;
+}
+
+.nav_li_right{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 150px;
+    padding: 5px;
+    background: rgba(255,255,255,0.5);
+    margin-left: 5px;
+}
+
+.ev_togg{
+    font-family: Trebuchet MS;
+    font-size: 12px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.logo_container_right{
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border: solid black 2px;
+    box-shadow: rgba(64, 131, 216, 1) 0px 0px 0px 2px;
+    background: linear-gradient(180deg, rgba(65, 255, 255, 0.75), rgba(64, 131, 216, 0.5));
+    margin-bottom: 20px;
+}
+
+.logo_container_right_select{
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border: solid black 2px;
+    box-shadow: rgba(64, 131, 216, 0.8) 0px 0px 0px 2px;
+    background: linear-gradient(#aaa, #fff);
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+div[class^=logo_container_right]:hover~span{
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+}
+
+.logo_img_right{
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+    position: absolute;
+    margin-left: 5px;
+}
+
+#center_pane{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: 80%;   
+}
+
+#event_name{
+    width: 100%;
+    min-height: 80px;
+    margin-bottom: 20px;
+}
+
+#ev_title{
+    width: 100%;
+    text-align: center;
+    font-family: Ubuntu-Condensed;
+    font-size: 50px;
+}
+
+#ev_oneliner{
+    width: 100%;
+    text-align: center;
+    font-family: OpenSans-R;
+    font-size: 16px;
+}
+
+
+.top_pane_events{
+    width: 80%;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#event_details{
+    height: 100%;
+    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#ev_topbar{
+    //background: red;
+    width: 100%;
+    //min-width: 200px;
+    height: 100px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#logo_spons{
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.spons_img_ev{
+    max-width: 200px;
+    max-height: 75px;
+}
+
+#ev_quote{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    //background: black;
+    height: 100%;
+    color: white;
+    font-family: 'Ubuntu-Condensed', sans-serif;
+    font-size: 17px;
+    -webkit-box-pack: end;
+    text-align: right;
+}
+
+#ev_tile_group{
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: space-around;
+    max-width: 80%;
+    margin-bottom: 30px;
+}
+
+#ev_desc{
+    width: 100%;
+    text-align: justify;
+    font-size: 18px;
+    height: 240px;
+    font-family: 'Abel', sans-serif;
+    overflow: auto;
+    padding: 5px;
+    margin-bottom: 10px;
+
+}
+
+.scroll::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3); 
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1);
+    background: rgba(255,255,255,.75) 
+}
+
+.ev_tile, .tile_img{
+    color: black;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 100px;
+}
+
+.overlay_tile_ev{
+    
+    cursor: pointer;
+    position: absolute;
+    background: rgba(255,255,255,0.5);
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Trebuchet MS;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-shadow: 0px 0px 5px white;
+    box-shadow: 0px 0px 4px white;
+}
+
+.overlay_tile_ev_select{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Trebuchet MS;
+    font-size: 20px;
+    background: linear-gradient(180deg, rgba(65, 255, 255, 0.75), rgba(64, 131, 216, 0.5));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+/*---------------------------------------------------*/
+
+.mid_container_genre_out{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 1400px;
+    transition: all 0.25s ease 0.25s;
+}
+
+
+#home_button{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    max-height: 150px;
+    min-height: 50px;
+    margin-top: 50px;
+}
+
+#home_but{
+    margin-left: -15px;
+    width: 40px;
+    height: 40px;
+}
+
+#events-login-button{
+    height: 40px;
+    width: 40px;
+    margin-left: -15px;
+    cursor: pointer;
+}
+
+.login-button{
+    cursor: pointer;
+}
+

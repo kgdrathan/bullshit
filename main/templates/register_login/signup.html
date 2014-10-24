@@ -1,0 +1,89 @@
+{% load url from future %}
+{% load i18n %}
+{% load static%}
+   
+{% block content %}
+<div class="reg_heading">
+    <span>Register</span>
+    <img src="{% static 'images/spons/home.png' %}" alt="" class="home-register" onclick="closeRegister()" />
+</div>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    {% csrf_token%}
+	<div class="register-section">
+		<div class="register-wrap">
+	        <div class="label">Name</div> 
+	        <div class="input-element">{{ form.firstname }}{{ form.lastname }}</div>
+	    </div>
+	    <div class="register-wrap">
+	        <div class="label">{{ form.username.label }}</div> 
+	        <div class="input-element" id="username-input">{{ form.username }}</div>
+	    </div>
+	    
+	    <div class="register-wrap">
+	        <div class="label">{{ form.password1.label }}</div> 
+	        <div class="input-element">{{ form.password1 }}</div>
+	    </div>
+	    <div class="register-wrap">
+	        <div class="label">{{ form.password2.label }}</div> 
+	        <div class="input-element">{{ form.password2 }}</div>
+	    </div>
+	    <div class="register-wrap">
+	        <div class="label">{{ form.email.label }}</div> 
+	        <div class="input-element" id="email-input">{{ form.email }}</div>
+	    </div>
+	    <div class="register-wrap">
+	        <div class="label">{{ form.contact.label }}</div> 
+	        <div class="input-element">{{ form.contact }}</div>
+	    </div>
+	</div>
+
+	<div class="register-section">    
+	<div class="register-wrap">
+	    <div class="label">{{ form.gender.label }}</div> 
+	    <div class="input-element">{{ form.gender }}</div>
+	</div>
+	<div class="register-wrap">
+	    <div class="label">{{ form.dateOfBirth.label }}</div> 
+	    <div class="input-element">{{ form.dateOfBirth}}</div>
+	</div>
+	<div class="register-wrap">
+	    <div class="label">{{ form.country.label }}</div> 
+	    <div class="input-element">{{ form.country }}</div>
+	</div>
+	<div class="register-wrap">
+	    <div class="label">{{ form.state.label }}</div> 
+	    <div class="scroll input-element">{{ form.state }}</div>
+	</div>
+	<div class="register-wrap">
+	    <div class="label">{{ form.department.label }}</div> 
+	    <div class="scroll input-element" style="width:90%;">{{ form.department }}</div>
+	</div>
+	<div class="register-wrap">
+	    <div class="label"><label for="id_firstname">{{ form.year.label }}</label></div> 
+	    <div class="scroll input-element">{{ form.year }}</div>
+	</div>
+	</div>  
+
+	<div class="register-section">
+        <div class="register-wrap" style="width:100%;">
+            <div class="label">{{ form.institution.label }}</div> 
+            <div class="scroll input-element">{{ form.institution }}</div>
+        </div>
+        <div class="register-wrap">
+            <div class="label">{{ form.address.label }}</div> 
+            <div class="input-element">{{ form.address }}</div>
+        </div>
+        <div class="register-wrap errors">
+        {% if form.errors %}
+			<div class="error">{{form.non_field_errors}}</div>
+		{% endif %}
+		</div>
+		<div class="register-wrap">
+  		    <div class="input-element">
+	            <button type="button" onclick="signup()" class="signup_click">Signup</button>
+	        </div>
+  		</div>
+	</div>
+</form>
+{% endblock %}

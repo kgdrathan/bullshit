@@ -1,0 +1,517 @@
+<html>
+<head>
+	<title>Workshops</title>
+	<script type="text/javascript" src={% static "js/jquery-1.8.3.min.js" %}></script>
+	<script type="text/javascript" src=(% static "js/jquery.easing.1.3.js" %}></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setpos1();
+			var deg;
+			function setpos1(){
+				var count = 0;
+				$('.workshop').each(function(){
+					count++;
+				});
+				var i = 0;
+				var theta = 2*Math.PI/count;
+				deg = 360/count;
+				var angle = 0;
+				$('.workshop').each(function(){
+					var y = 220-290*Math.cos(angle)-25;/*(width/2)-rad*sin-(imgheight)*/
+					var x = 220+290*Math.sin(angle)-95;
+					var total = (i*deg)+270;
+					if((total>=414)&&(total<590)){total+=180;$(this).css("text-align","right");if(total==450){x+=10;}else if(total==495){y+=10;x-=10;}else if(total==540){x-=30;}else if(total==585){x-=10;y-=10;}}
+					$(this).css({"top" : y.toString()+"px" , "left" : x.toString()+"px" , "-webkit-transform" : "rotate("+total+"deg)", "-moz-transform" : "rotate("+total+"deg)", "-o-transform" : "rotate("+total+"deg)", "transform" : "rotate("+total+"deg)"});
+					angle += theta;
+					i++;
+				});
+				i=0;
+				angle=0;
+				$('.dot').each(function(){
+					var y = 180-180*Math.cos(angle)-11;
+					var x = 180-180*Math.sin(angle)-11;
+					$(this).css({"top" : y.toString()+"px" , "left" : x.toString()+"px"});
+					angle += theta;
+					i++;
+				});
+				$('#parent').css({"-webkit-transform":"rotate(60deg)","-moz-transform":"rotate(60deg)","-o-transform":"rotate(60deg)","transform":"rotate(60deg)"});
+			}
+			/*$(".circle").click(function(){
+				//alert("yay");
+				$(this).css({"-webkit-transform":"rotate(360deg) scale(0.5,0.5)","-moz-transform":"rotate(360deg) scale(2,2)","-o-transform":"rotate(360deg) scale(2,2)","transform":"rotate(360deg) scale(2,2)"});
+			});*/
+			var rot;
+			var clicked;
+
+			$(".workshop").click(function(){
+				$(".workshop").each(function(){
+					$(this).animate({"opacity":"0"},1000,function(){$(this).css("display","none");});
+				});
+				clicked = $(this);
+				$(this).addClass("active");
+				var num = parseInt($(this).attr("alt"));
+				rot = 270-(deg*num);
+				rot = (rot > 31)?(rot):(360+rot);
+				
+				setTimeout(function(){
+					$("#parent").css({"-webkit-transform":"rotate("+rot+"deg)","-moz-transform":"rotate("+rot+"deg)","-o-transform":"rotate("+rot+"deg)","transform":"rotate("+rot+"deg)"});
+					//clicked.animate({"width":"100","height":"100"},1000,function(){$(this).fadeOut();});
+					$(".workshop").each(function(){
+					//if($(this).attr("alt")!=num.toString())$(this).animate({"opacity":"0"},1000);
+					
+					});
+					setTimeout(function(){$(".circle,#border").animate({"opacity":"0"},1000,function(){
+						$("#small_circle").fadeIn();
+						$("#content,div[alt="+num+"]").fadeIn();
+					//gocircle();
+					})},1000);},500);
+			});
+
+			$("#arrow1,#arrow").click(function(){
+				var num =  parseInt(clicked.attr("alt"));
+				$("#small_circle,#content,div[alt="+num+"]").fadeOut("slow");
+				setTimeout(function(){
+					//clicked.css({"width":"110","height":"50"});
+					clicked.fadeIn("fast",function(){$(".workshop").css("display","block");$(".workshop,.circle,#border").animate({"opacity":"1"},1000,function(){
+					$('#parent').css({"-webkit-transform":"rotate(60deg)","-moz-transform":"rotate(60deg)","-o-transform":"rotate(60deg)","transform":"rotate(60deg)"});
+				});});
+					},1000);
+				
+			});
+			
+			$("#arrow1").mouseover(
+				function(){
+					$("#arrow1").css("display","none");
+					$("#arrow").css("display","block");
+				}
+			);
+
+			$("#arrow").mouseout(function(){
+					$("#arrow").css("display","none");
+					$("#arrow1").css("display","block");
+				}
+			);
+
+			/*function gocircle(){
+				$(".circle").animate({top:"10px",left :"1200px",width:"50px",height:"50px","border-radius":"25px"},1000);
+				setTimeout(function(){$(".active").animate({left:"100px",top:"100px"},500);},500);
+			}*/
+
+			
+		});
+		
+		function reg_work(con)
+{ $("#load").load("update_work.php?ws="+con);
+}
+
+
+
+			
+		
+	</script>
+	<style type="text/css">
+		body{
+			overflow: hidden;
+		}
+		#bg{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height:116%;
+
+		}
+		/*#full{
+			width:101%;
+			height:100%;
+			overflow:hidden;
+		}*/
+		#parent{
+			position: absolute;
+			top: 100px;
+			left: 450px;
+			width: 440px;
+			height: 440px;
+			-webkit-transition:all 1s ease-in-out;
+			-moz-transition:all 1s ease-in-out;
+			-o-transition:all 1s ease-in-out;
+			transition:all 1s ease-in-out;
+		}
+		.circle{
+			position: absolute;
+			top: 100px;
+			left: 450px;
+			width: 440px;
+			height: 440px;
+			border-radius: 220px;
+			text-align: right;
+			color: white;
+			/*-webkit-transition:all 2s ease-in-out;
+			-moz-transition:all 2s ease-in-out;
+			-o-transition:all 2s ease-in-out;
+			transition:all 2s ease-in-out;*/
+		}
+		#border{
+			width: 360px;
+			height: 360px;
+			border-radius: 180px;
+			position: absolute;
+			top: 40px;
+			left: 40px;
+			border: 1px solid rgba(255,255,255,0.2);
+			background-color: rgba(0,0,0,0.6);
+			z-index: 0;
+		}
+		.dot{
+			position: absolute;
+		}
+		#ktj{
+			position: relative;
+			top: 58px;
+			left: -5px;
+			opacity:1;
+		}
+		/*#one{
+			position: absolute;
+			top: -30px;
+			left: 75px;
+		}
+		#two{
+			position: absolute;
+			top: 170px;
+			left: 75px;
+			-webkit-transform:rotate(180deg);
+		}*/
+		#content{
+			position: absolute;
+			top: 195px;
+			left: 300px;
+			width: 740px;
+			height: 250px;
+			display: none;
+			color: white;
+			font-family: "Trebuchet MS";
+		}
+		.icon{
+			float: left;
+			margin:8px 10px 20px 0px;
+			border-radius: 8px; 
+		}
+		#small_circle{
+			position: absolute;
+			top: 70px;
+			left: 1100px;
+			width: 120px;
+			height: 120px;
+			display: none;
+		}
+		#scircle{
+			width: 80px;
+			height: 80px;
+			border-radius: 40px;
+			border: 1px solid rgba(255,255,255,0.1);
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+		#bcircle{
+			width: 116px;
+			height: 116px;
+			border-radius: 58px;
+			border: 1px solid rgba(255,255,255,0.1);
+			position: absolute;
+			top: 2px;
+			left: 2px;
+		}
+		div.workshop{
+			position: absolute;
+			display: inline-block;
+			color: white;
+			width: 190px;
+			height: 50px;
+			vertical-align: middle;
+			font-family: "Trebuchet MS";
+			font-weight: bold;
+			cursor: pointer;
+			z-index:2;
+		}
+		div.workshop span{
+			font-size: 1.4em;
+		}
+		div.workshop .desc{
+			font-size:0.7em;
+			padding:0px 3px;
+			letter-spacing:1px
+		}
+		.wcell{
+			display: none;
+		}
+		.wcell .para{
+			position:absolute;
+top:69px;
+			left:160px;
+			width:590px;
+		}
+.spons_logo{
+position:absolute;
+top:10px;
+left:160px;
+}
+.heading{
+position:absolute;
+top:4px;
+left:380px;
+width:360px;
+}
+.heading span{
+	font-size:1.4em;
+	font-weight: bold;
+}
+.heading p{
+	font-size: 0.9em;
+	color:black;
+}
+.heading1{
+position:absolute;
+top:4px;
+left:380px;
+width:360px;
+}
+.heading2{
+position:absolute;
+top:4px;
+left:180px;
+width:360px;
+}
+	</style>
+</head>
+
+<body>
+<div id="load"></div>
+<script type="text/javascript">
+function showMessage(tit,con){
+var a=document.getElementById("myAlert");
+a.innerHTML="<div id='myClose' onclick='removeMessage();'>&#9762;</div><h1>"+tit+"</h1>"+con;
+a.style.opacity=1;
+}
+function removeMessage(){
+var a=document.getElementById("myAlert");
+document.body.removeChild(a);
+var c=document.getElementById("pageFill");
+document.body.removeChild(c);
+}
+</script><div id="full">
+<img id="bg" src={% static "img/workshops/bg.png" %} >
+<div class="circle">
+<img id="ktj" src={% static "img/workshops/ktj.gif" %} width="440" height="330">
+</div>
+<div id="parent">
+<div id="border"><img class="dot" src={% static "img/workshops/dot1.png" %} width="22" height="22"><img class="dot" src={% static "img/workshops/dot5.png" %} width="22" height="22"><img class="dot" src={% static "img/workshops/dot4.png" %} width="22" height="22"><img class="dot" src={% static "img/workshops/dot3.png" %} width="22" height="22"><img class="dot" src={% static "img/workshops/dot2.png" %} width="22" height="22"><img class="dot" src={% static "img/workshops/dot1.png" %} width="22" height="22"><!--<img class="dot" src="dot5.png" width="22" height="22">--><img class="dot" src={% static "img/workshops/dot4.png" %} width="22" height="22"><img class="dot" src={% static "img/workshops/dot3.png" %} width="22" height="22"><img class="dot" src={% static "img/workshops/dot2.png" %} width="22" height="22"></div>
+<div class="workshop" id="one" alt="0"><span class='name' style="color:#237105;">TEXAS INSTRUMENTS</span><br><span class='desc'>Embedded Android On Beagleboard</span></div>
+<!--<img class="workshop" id="one" src="workshoppage.jpg" alt="0" width="50" height="60">-->
+<!--<img class="dot" src="dot.png" width="20" height="20">-->
+<div class="workshop" id="two" alt="1"><span class='name' style="color:#890707;">SEBI and BSE</span><br><span class='desc'>Financial Planning for future and Risk Management at the Exchange</span></div>
+<div class="workshop" id="three" alt="2"><span class='name' style="color:#EE7310;">TEXAS INSTRUMENTS</span><br><span class='desc'>Analog System Design</span></div>
+<div class="workshop" id="five" alt="3"><span class='name' style="color:#038FA4;">IBM</span><br><span class='desc'>Web 2.0</span></div>
+<!--<div  class="workshop" id="ten" alt="9"><span class='name' style="color:#24409A;">ISRO</span><br><span class='desc'>Workshop</span></div>-->
+<div  class="workshop" id="four" alt="4"><span class='name' style="color:#237105;">TRUTH LABS</span><br><span class='desc'>Lie Spotting</span></div>
+<div class="workshop" id="six" alt="5"><span class='name' style="color:#890707;">IBM</span><br><span class='desc'>Unstructured Data Analysis & Statistical Modelling</span></div>
+<div class="workshop" id="seven" alt="6"><span class='name' style="color:#EE7310;">SSI</span><br><span class='desc'>Optoelectronics , Microwave devices and MOSFETS by SSI</span></div>
+<div  class="workshop" id="eight" alt="7"><span class='name' style="color:#038FA4;">NCDEX</span><br><span class='desc'>Investing in Commodity Markets: Trading & Risk Management</span></div>
+<div  class="workshop" id="nine" alt="8"><span class='name' style="color:#24409A;">KLA Tencor</span><br><span class='desc'>The Hi-tech World of Semiconductor Fabrication</span></div>
+</div>
+
+
+<div id="content">
+	<div class="wcell" alt="0">
+<div class='spons_logo'><img src={% static 'img/workshops/texas.jpg' %}/></div>
+	<img class='icon' src={% static 'img/workshops/android.jpg' %} width='150' height='222' style='border:2px solid #237105;'>
+<div class='heading'><br>	<!--<span style='font-size:5em;font-weight:bold;color:#237105;'>Texas Instruments</span><br>-->
+	<span style='color:#237105;'>Embedded Android On Beagleboard</span></div><br>
+	<div class='para'><p align="justify">In this age of smartphones Android has undoubtedly become the world`s
+most popular mobile platform. This brainchild of Google is a household name and
+an indispensable part of the lives of many. Each little piece of news about its eagerly
+anticipated updates becomes a trending topic in tech blogs all over the web. Currently
+extending its reach beyond phones and tablets, Android systems for embedded devices is
+the next big thing.</p><p align="justify">
+Offering a unique opportunity to learn about Android-based embedded systems,
+this workshop will be organised by leading manufacturer of semiconductor products, Texas
+Instruments. Envisioning a future with automated homes and robots controlled by Android
+devices, this technology opens up a world of exciting possibilities for the developers.<br><br>
+Participants who are interested to attend this workshop are requested to send their resume or statement of purpose for attending the workshop at <a style="color:#237105;" href="mailto:texas.workshop@ktj.in">texas.workshop@ktj.in</a> specifying the subject as "Embedded Android On Beagleboard".<br>Entries will accepted until 28th January.<br><br>
+The workshops by Texas Instruments on Analog System Design and Embedded Android On Beagleboard will be taking place at the same time. So, all the participants are told to register for only 1 workshop.
+</p></div>
+	</div>
+	<div class="wcell" alt="2">
+<div class='spons_logo'><img src={% static 'img/workshops/texas.jpg' %}/></div>
+	<img class='icon' src={% static 'img/workshops/analog.jpg' %} width='150' height='222' style='border:2px solid #EE7310;'>
+<div class='heading'><br><br><!--	<span style='font-size:5em;font-weight:bold;color:#EE7310;'>TEXAS INSTRUMENTS</span><br>-->
+	<span style='color:#EE7310;'>Analog System Design</span></div><br>
+	<div class='para'><p align="justify">Analog circuits often find their applications in domains where speed, area or power
+has an advantage over the digital approach. Signal processing through this system will
+never take a rear seat since the interface with the external world will always remain analog.
+In fact, having reached its maturity, the analog design system is here to stay, for it is driven
+by the urge to improve the existing technology rather than developing new ones.
+To exemplify upon Analog System Design will be Texas Instruments, the world`s
+largest producer of analog semiconductors. The workshop will impart basic knowledge
+regarding the use of macro models and simulation tool(s) as well as keep the aspiring
+system designers updated with the latest trends and technology in analog system design.<br><br>
+Participants who are interested to attend this workshop are requested to send their resume or statement of purpose for attending the workshop at <a style="color:#EE7310;" href="mailto:texas.workshop@ktj.in">texas.workshop@ktj.in</a> specifying the subject as "Analog System Design".<br>Entries will accepted until 28th January.<br><br>
+The workshops by Texas Instruments on Analog System Design and Embedded Android On Beagleboard will be taking place at the same time. So, all the participants are told to register for only 1 workshop.
+</p></div>
+	</div>
+	<div class="wcell" alt="1">
+<div class='spons_logo'><img src={% static 'img/workshops/sebi_bse123.png' %}/></div>
+	<img class='icon' src={% static 'img/workshops/financial planning.jpg' %} width='150' height='222' style='border:2px solid #890707;'>
+<div class='heading' style='left:430px;'><!--	<span style='font-size:5em;font-weight:bold;color:#890707;'>SEBI and BSE</span><br>-->
+	<span style='color:#890707;'>Financial Planning for the future and Risk Management at the Exchange</span></div><br>
+	<div class='para'><br><p align="justify">It is fairly reasonable to assume that how we treat our finances now will indeed
+reap its fruit in the future; so only the uninitiated will sit helplessly and watch where their
+fate leads them. The wise invest in strategies to ensure that they continue leading plush
+lives even in tough times. To aid you in mitigating these very risks will be expert personnel
+from The Securities and Exchange Board of India (SEBI). Appointed as the regulator
+of the capital market, SEBI was established by the Government of India to promote the
+development of the securities market.</p>	<p align="justify">
+The stock market is a world of limitless possibilities. Rightly goes the adage:``Greater the risk, greater the return``. Making hefty investments at the Exchange will
+inevitably invite wide-ranging risks of even larger magnitude. The Bombay Stock Exchange
+(BSE) is India`s leading exchange group and Asia`s first Stock Exchange. An organization
+with global reach, experts from BSE will be elucidating on risk management at the
+Exchange.</br>
+<br><a style="cursor:pointer;color:#890707;" id="load1" onClick="reg_work('sebi')">Click Here</a> to register</p></div>
+	</div>
+<!--<div class="wcell" alt="1">
+<div class='spons_logo'><img src='sebi_bse123.png'/></div>
+	<img class='icon' src='financial planning.jpg' width='150' height='222' style='border:2px solid #890707;'>
+<div class='heading' style='left:430px;'><!--	<span style='font-size:5em;font-weight:bold;color:#890707;'>SEBI and BSE</span><br>
+	<span style='color:#890707;'>Financial Planning for the future and Risk Management at the Exchange</span></div><br>
+	<div class='para'><br><p align="justify">It is fairly reasonable to assume that how we treat our finances now will indeed
+reap its fruit in the future; so only the uninitiated will sit helplessly and watch where their
+fate leads them. The wise invest in strategies to ensure that they continue leading plush
+lives even in tough times. To aid you in mitigating these very risks will be expert personnel
+from The Securities and Exchange Board of India (SEBI). Appointed as the regulator
+of the capital market, SEBI was established by the Government of India to promote the
+development of the securities market.</p>	<p align="justify">
+The stock market is a world of limitless possibilities. Rightly goes the adage:``Greater the risk, greater the return``. Making hefty investments at the Exchange will
+inevitably invite wide-ranging risks of even larger magnitude. The Bombay Stock Exchange
+(BSE) is India`s leading exchange group and Asia`s first Stock Exchange. An organization
+with global reach, experts from BSE will be elucidating on risk management at the
+Exchange.</br>
+<br><a style="cursor:pointer;color:#890707;" id="load1" onClick="reg_work('sebi')">Click Here</a> to register</p></div>
+	</div>--><!--
+	<div class="wcell" alt="9">
+	<img class='icon' src='isro.jpg' width='150' height='222' style='border:2px solid #24409A;'>
+<div class='heading2' ><br><!--<span style='font-size:5em;font-weight:bold;color:#24409A;'>ISRO</span><br>
+	<span style='font-size:4em;font-weight:bold;color:#24409A;'>ISRO</span></div><br>
+	<div class='para'><p align="justify">
+Space has often been called the final frontier. Largely beyond the scope of human understanding, it never fails to intrigue us. Space exploration leads to new advancements in technology, which ultimately find their way into our daily lives. Some examples lying in plain sight include LEDs, artificial limbs and scratch-resistant lenses. Established to advance space technology and use its applications for national benefit, ISRO is India’s primary space agency and one of the largest in the world. 
+</p>	<p align="justify">Having launched numerous communication and observations satellites through the years, ISRO is set to launch yet another satellite in the second week of February. Coming here at Kshitij to conduct a workshop will be professionals from ISRO, to share enlightening insights with the space enthusiasts.<br><br>
+
+<a style="cursor:pointer;color:#24409A;" id="load1" onClick="reg_work('isro')">Click Here</a> to register.</p>
+</div>
+	</div>-->
+	<div class="wcell" alt="4">
+	<img class='icon' src={% static 'img/workshops/truth.jpg' %} width='150' height='222' style='border:2px solid #237105;'>
+	<div class='heading' style='left:265px;'><!--<span style='font-size:5em;font-weight:bold;color:#890707;'>IBM</span><br>-->
+	<span style='color:#237105;'>Lie Spotting</span></div><br>
+	<div class='para'><p align="justify"><br>
+Rightly said Walt Whitman; `Writing and talk do not prove me, I carry the plenum of proof
+and everything else in my face`. Subject of the popular TV series `Lie To Me`, Liespotting is
+quickly garnering attention as a very interesting, albeit technical, science. An indispensable
+tool in improving people skills, lie detection is a boon to those looking to improve their
+personal relationships. Not only personal relationships, this versatile art finds broad usage
+even in the corporate environment, be it negotiating a deal or making crucial company
+decisions. These techniques were developed and perfected by intelligence services,
+law enforcement agencies, and security specialists over the last 75 years. 
+This unique workshop at Kshitij will equip you to decipher the body language, facial expressions, words
+and actions of people, soon letting you discover a world of information hidden in plain sight.
+</br><br><a style="cursor:pointer;color:#237105;" id="load1" onClick="reg_work('lie_spotting')">Click Here</a> to register
+</p></div></div>
+	<div class="wcell" alt="5">
+        <div class='spons_logo'><img src={% static 'img/workshops/ibm.png' %} /></div>
+	<img class='icon' src={% static 'img/workshops/uda.jpg' %} width='150' height='222' style='border:2px solid #890707;'>
+	<div class='heading' style='left:265px;'><!--<span style='font-size:5em;font-weight:bold;color:#890707;'>IBM</span><br>-->
+	<span style='color:#890707;'>Unstructured Data Analysis and Statistical Modelling</span></div><br>
+	<div class='para'><p align="justify"><br>
+Business, with all its uncertainty, requires not just innovation but an accurate
+analysis of customer sentiments and potential risks. Structured data analysis coupled
+with business intelligence may just prove to be inadequate. With advances in technology,
+companies have started to look for unstructured data to ensure broader perspective of the
+market scenario. Kshitij in association with IBM is conducting a one of its kind workshop on
+Unstructured Data Analysis and Statistical Modeling.</p>	<p align="justify">
+The workshop will cover several topics like Natural Language Processing,
+Morphology, Information Retrieval, Structured and Unstructured Data Analysis, Advanced
+Analytics, Statistical Modeling and Text Analytics. A perfect symbiosis between technology
+and finance, the topics covered in the workshop will prove indispensable to help one master
+the field of data interpretation and consolidate their business sense.<br><br>
+<a style="color:#890707;" href="https://docs.google.com/spreadsheet/viewform?formkey=dDRabkdXWVY5Zy1idGJLYjFEMkFMUEE6MQ" target="blank">Click here</a> to register for the workshop.
+</p></div>
+	</div>
+<div class="wcell" alt="3">
+        <div class='spons_logo'><img src={% static 'img/workshops/ibm.png' %} /></div>
+	<img class='icon' src={% static 'img/workshops/web.jpg' %} width='150' height='222' style='border:2px solid #038FA4;'>
+	<div class='heading' style='left:265px;'><!--<span style='font-size:5em;font-weight:bold;color:#890707;'>IBM</span><br>-->
+	<span style='color:#038FA4;'>Web 2.0</span></div><br>
+	<div class='para'><p align="justify"><br>
+Web 2.0, the next generation of the World Wide Web, is more than just a marketing buzzword. Ushering in a new era, Web 2.0 includes Ajax and JavaScript frameworks for more interactive web-based apps. The feature-rich Web 2.0 brings with it a marked difference in user experience and scalability by focussing on collaborative and user-driven applications.
+</p>	<p align="justify">To equip the aspiring programmers and web designers with the latest tools and techniques of this phenomenon, a workshop on Web 2.0 will be organised by corporate giant IBM. With wide-ranging implications, this promising topic offers great scope in the future of web designing.<br><br>
+<a style="color:#038FA4;" href="https://docs.google.com/spreadsheet/viewform?formkey=dDRabkdXWVY5Zy1idGJLYjFEMkFMUEE6MQ" target="blank">Click here</a> to register for the workshop.
+</p></div>
+	</div>
+	<div class="wcell" alt="6">
+        <div class='spons_logo'><img src={% static 'img/workshops/kla_tencor.png' %} /></div>
+	<img class='icon' src={% static 'img/workshops/optoelectronics.jpg' %} width='150' height='222' style='border:2px solid #EE7310;'>
+<div class='heading1'><!--	<span style='font-size:5em;font-weight:bold;color:#EE7310;'>KLA TENCOR</span><br>-->
+	<span style='color:#EE7310;'>Optoelectronics, Microwave devices and MOSFETS by SSI</span></div><br>
+	<div class='para'><p align="justify">
+The advent of semiconductors 60 years ago has since revolutionized electronic
+devices, quickly becoming the very crux of the industry. It would suffice to say that
+engineers specialising in semiconductor technology are sought-after the world over for
+advanced research work in the field.</p>	<p align="justify">
+With an agenda to provide an interactive forum to elucidate upon semiconductor
+devices, KLA-Tencor along with the Semiconductor Society of India (SSI) will be
+conducting a workshop on optoelectronics, microwave devices and MOSFETs. With new
+advancements being made perpetually in this field, it becomes imperative to keep pace with
+these upcoming topics. Professionals from SSI and KLA-Tencor will provide participants
+with hands-on experience with these components, which finds usage in virtually all
+electronic devices, be it smartphones or holographic projectors.
+</br><br><a style="cursor:pointer;color:#EE7310;" id="load1" onClick="reg_work('kla')">Click Here</a> to register
+</p></div>
+	</div>
+	<div class="wcell" alt="7">
+	<div class='spons_logo'><img src={% static 'img/workshops/ncdex_logo.jpg' %} /></div>
+	<img class='icon' src={% static 'img/workshops/123.jpg' %} width='150' height='222' style='border:2px solid #038FA4;'>
+<div class='heading' style="left:410px;"><!--	<span style='font-size:5em;font-weight:bold;color:#EE7310;'>KLA TENCOR</span><br>-->
+	<span style='color:#038FA4;'>Investing in Commodity Markets: Trading & Risk Management</span></div>
+	<div class='para'><p align="justify"><br><br><br>For those who want to diversify their portfolios beyond shares, bonds and real estate, investing in commodity markets is the best option. Clocking an annual turnover of INR 1,40,000 crore, the various commodities across the country offer immense potential to become a separate asset class for market-
+savvy investors and arbitrageurs.</p><p align="justify">
+National Commodity & Derivatives Exchange Limited (NCDEX) is the only commodity exchange
+in the country promoted by national level institutions, apart from large public sector banks and
+companies. Under the expert tutelage of NCDEX professionals, participants will learn not only about
+the current scenario of commodity markets, but also gain insights into the slew of expected reforms
+and future prospects in the field. To consolidate the strategies taught and put theory into practice, the
+workshop will be followed by a mock trading session.</br><br><a style="cursor:pointer;color:#038FA4;" id="load1" onClick="reg_work('ncdex')">Click Here</a> to register</p></div>
+
+</div>
+<div class="wcell" alt="8">
+	<div class='spons_logo'><img src={% static 'img/workshops/kla_tencor.png' %} /></div>
+	<img class='icon' src={% static 'img/workshops/semiconductor.png' %} width='150' height='222' style='border:2px solid #24409A;'>
+<div class='heading' style="left:410px;"><!--	<span style='font-size:5em;font-weight:bold;color:#EE7310;'>KLA TENCOR</span>--><br>
+	<span style='color:#24409A;'>The Hi-Tech World of Semiconductor Fabrication</span></div>
+	<div class='para'><p align="justify"><br><br><br>The electronics industry has recently seen a huge boost in demand, driven primarily by consumer goods and handheld devices. Your phones keep getting more complex, while the prices keep going down. It's said that the average smart phone has more computational power than Apollo 11 when it landed on the moon. What is the story behind the scenes which makes this possible? The semiconductor fabrication industry continues to push the limits of technology making devices smaller, faster and of course cheaper. Kshitij 2013 presents a descriptive workshop on 'The Hi-tech World of Semiconductor Fabrication’, conducted by KLA-Tencor, one of the leaders in the semiconductor equipment industry. 
+<br><br><a style="cursor:pointer;color:#24409A;" id="load1" onClick="reg_work('semiconductor')">Click Here</a> to register</p></div>
+
+</div>
+
+</div>
+<div id="small_circle">
+	<div id="scircle"></div>
+	<div id="bcircle"></div>
+	<img src={% static "img/workshops/small.png" %} width="120" height="120" style="position:absolute;top:0px;left:0px;">
+	<img id="arrow" src={% static "img/workshops/arrow.png" %} width="50" height="55" style="position:absolute;top:33px;left:35px;cursor:pointer;display:none;">
+	<img id="arrow1" src={% static "img/workshops/arrow1.png" %} width="50" height="55" style="position:absolute;top:33px;left:35px;cursor:pointer;">
+</div>
+</div>
+
+</body>
+
+</html>

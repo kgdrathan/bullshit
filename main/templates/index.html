@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+{% load static %}
+{% load lowertrim %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kshitij 2015 - The Annual Techno-management Fest of IIT Kharagpur</title>
+    <meta name="description" content="{{descr}}" />
+    <meta name="keywords" content="Kshitij, Asia's largest, Techno-management fest, Online Events, IIT Kharagpur, technology, management, ASME, IEEE, ACM, ASHRAE, IMechE, college fest, university, India, IIT, Indian Institute of technology, Kshitij 2014, technical fest, events, megashows,guests, workshops, c-monopoly, forex, excaliber, cryptex, innovation, Online Competitions, West Bengal, Bombay, Delhi, Science, robotix, robotics, India, Kgp, IIT Kgp" />
+
+    <meta itemprop="name" content="Kshitij 2015 - The Annual Techno-management Fest of IIT Kharagpur" />
+
+    <meta itemprop="description" content="The 12th edition of Asia's largest techno-management fest, conducted by IIT Kharagpur." />
+    <meta itemprop="image" content="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-ash4/995726_355628404563901_734572174_n.png" />
+    <meta itemprop="sameas" content="https://en.wikipedia.org/wiki/Kshitij" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src ="{% static 'js/vendor/jquery-1.11.1.min.js' %}"></script>
+    <script src ="{% static 'js/plugins.js' %}"></script>
+    <script src ="{% static 'js/vendor/prefixfree.min.js' %}"></script>
+    <script src ="{% static 'js/vendor/waypoints.min.js' %}"></script>
+    <!-- // <script src ="{% static 'js/vendor/jquery.animate-enhanced.min.js' %}"></script> -->
+    <script src="{% static 'js/vendor/modernizr-2.6.2.min.js' %}"></script>
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+        var windowLocatn;
+        
+        var sponsTickerPost = new Array();
+        var sponsTickerImage = new Array();
+
+        var exhiName = new Array();
+        var exhiDesc = new Array();
+        var exhiCountry = new Array();
+        var exhiFlag = new Array();
+        var exhiImg = new Array();
+        
+        var guestName = new Array();
+        var guestDesc = new Array();
+        var guestImg = new Array();
+
+        var megashowName = new Array();
+        var megashowDesc = new Array();
+        var megashowImg = new Array();
+
+        var i =0, j=0, k=0, l=0;
+
+        {% for sp in sponsTicker %}
+            sponsTickerPost[l] = "{{sp.spons.post.name|escapejs}}";
+            sponsTickerImage[l] = "{{sp.spons.image|escapejs}}";
+            l++;
+        {% endfor %}
+
+        var eventNameIndex = {
+        {% for evt in allEvents %}
+            {% if forloop.last %}
+                {{evt.id}} : "{{evt.name|lowertrim}}"
+            {% else %}
+                {{evt.id}} : "{{evt.name|lowertrim}}",
+            {% endif %}
+        {% endfor %}
+        };
+
+        {% for e in exhibitions %}
+
+            exhiName[i] = "{{e.name|escapejs}}";
+            exhiDesc[i] = "{{e.description|escapejs}}";
+            exhiCountry[i] = "{{e.country|escapejs}}";
+            exhiFlag[i] = "{{e.country_flag|escapejs}}";
+            exhiImg[i] = "{{e.image|escapejs}}";
+            i++;
+        
+        {% endfor %}
+
+        {% for g in guests %}
+
+            guestName[j] = "{{g.name|escapejs}}";
+            guestDesc[j] = "{{g.description|escapejs}}";
+            guestImg[j] = "{{g.image|escapejs}}";
+            j++;
+        
+        {% endfor %}
+
+        {% for m in megashows %}
+
+            megashowName[k] = "{{m.name|escapejs}}";
+            megashowDesc[k] = "{{m.description|escapejs}}";
+            megashowImg[k] = "{{m.image|escapejs}}";
+            k++;
+        
+        {% endfor %}
+    </script>
+    <script src ="{% static 'js/loader.js' %}"></script>
+    <script src ="{% static 'js/main.js' %}"></script>
+    <script src ="{% static 'js/spons.js' %}"></script>
+    <script src ="{% static 'js/events.js' %}"></script>
+    <script src ="{% static 'js/exhibitions.js' %}"></script>
+    <script src ="{% static 'js/workshops.js' %}"></script>
+    <script src ="{% static 'js/guests.js' %}"></script>
+    <script src ="{% static 'js/megashows.js' %}"></script>
+    <script src ="{% static 'js/superscript.js' %}"></script>
+    <script src ="{% static 'js/login_reg.js' %}"></script>
+    
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register_login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/spons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/events.css' %}">
+    <link rel="stylesheet" href="{% static 'css/exhibitions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/workshops.css' %}">
+    <link rel="stylesheet" href="{% static 'css/guests.css' %}">
+    <link rel="stylesheet" href="{% static 'css/megashows.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+</head>
+
+<body>
+<!-- ===================================================== -->
+<!-- =================The Loading page starts============= -->
+<!-- ===================================================== -->
+<div id="loading-page">
+    <div id="loading-horizontal">
+
+        <div id="loading-ktj-logo">
+            <img src="{% static 'images/menu/ktj_logo.png' %}">
+        </div>
+
+        <div id="loading-horizontal-center">
+            <div id="loading-center">
+                <div id="loading-center-circle">
+                    <div id="onload-enter-button" onclick="allowEnter();">Enter Website</div>        
+                </div>
+            </div>
+        </div>
+
+        <div id="onload-enter-text">
+            <p id='ktj-enter-text'>Kshitij <bluetext>2015</bluetext></p>
+            <p id="ktj-date">30th January, 2015 - 2nd February, 2015</p>
+        </div>
+
+        <div id="loading-kgp">
+            <a href="http://www.iitkgp.ac.in/" target="_blank"><img src="{% static 'images/menu/kgp_logo.png' %}"></a>
+        </div>
+
+    </div>
+
+    <div id="progress-bar">
+        <i id='percent-box'></i>
+        <div id="progress-overlay-bar"></div>
+    </div>
+
+</div>
+<!-- =====================================================-->
+<!-- =================The Loading page ends=============== -->
+<!-- ===================================================== -->
+    
+
+<div id="super-container">
+
+    <!--.................The Background Video.................-->
+    <div id="backg">
+        <!-- <video autoplay loop poster="{% static 'images/bg.png' %}" id="bgvid">
+            <source src="{% static 'images/bg_video.mp4' %}" type="video/mp4">
+        </video> -->
+        <canvas id="c"></canvas>
+    </div>
+    <!--.......................................................-->
+
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+<!-- ===================================================== -->
+<!-- =================Registration/Login page============= -->
+<!-- ===================================================== -->
+    <div id="registration_container">
+        <!-- loaded from ajax -->
+    </div>
+
+    <div id="login_container">
+        <!-- loaded from ajax -->
+    </div>
+
+<!-- ===================================================== -->
+<!-- ===========Registration/Login page ends============== -->
+<!-- ===================================================== -->
+
+
+<!-- ===================================================== -->
+<!-- =================The Main Menu Starts================ -->
+<!-- ===================================================== -->
+    
+
+    <div id="main_container" class="section-container">
+        <!--<div id="kalworkshop"  hidden="ture">
+            <div id="kalworkshop_content">
+                <div style="float:right;top:0px;position:relative;cursor:pointer;" onclick="$('#kalworkshop').hide();">X</div>
+                <p><span class="click" onclick="event_reg(1000)">Click Here</span> to register for the Kolkata Workshop.</p>  
+                <div id="event_1000_06_01"></div>
+                <br><br>
+                <div>
+                    <b>Date:</b>19th October<br>
+                    <b>Time:</b> 9:30 AM - 12:00 PM<br>
+                    <b>Venue:</b> <br>
+                    G D Birla Sabhagar Auditorium  <br>
+29, Near Ballygunge Post Office, <br>Ashutosh Chowdhury Avenue, <br>Ballygunge, <br>Kolkata - 700019 
+                    
+                </div>
+            </div>
+        </div>-->
+        <div class="menu-navigation-bar">
+            <div id="ktj_logo_img">
+                <img src="{% static 'images/menu/ktj_logo.png' %}">
+            </div>
+            <div id="ktj_text">
+                KSHITIJ <num>2015</num>
+            </div>
+            <div id="kgp_logo">
+                <a href="http://www.iitkgp.ac.in/" target="_blank"><img src="{% static 'images/menu/kgp_logo.png' %}" ></a>
+            </div>
+        </div>
+
+        <div class="menu-navigation">
+            <div id="menu_nav_li">
+                <a href="#spons-page-container" onclick="changeUrl('sponsors');" id="go_sponsors" title="">SPONSORS</a>
+                <a href="#event_container" onclick="changeUrl('events');" id="go_events" title="">EVENTS</a>
+                <a href="#exhibitions_container" onclick="changeUrl('exhibitions');" id="go_exhibitions" title="">EXHIBITIONS</a>
+                <a href="#workshops_container" onclick="changeUrl('workshops');" id="go_workshops" title="">WORKSHOPS</a>
+                <a href="#guests_container" onclick="changeUrl('guests');" id="go_guests" title="">GUESTS</a>
+                <a href="#megashows_container" onclick="changeUrl('megashows');" id="go_megashows" title="">MEGASHOWS</a>
+                <a href="#contacts-page-container" onclick="changeUrl('contacts');" id="go_contacts" title="">CONTACTS</a>
+            </div>
+        </div>
+      <!--  <marquee style="color:white" onmouseover="this.stop();" onmouseout="this.start();" ><span style="color:white;cursor:pointer;" onclick="$('#kalworkshop').show();">Click here</span> to register for Kolkata Workshop</marquee> -->
+        <div id="mid_content_main">
+
+            <div id="spons_ticker">
+                <div id="tick_side_circle">
+                    <img src="{% static 'images/menu/tick_circle.png' %}" class="update-pull-switch">
+                </div>    
+                <div id="tick_display_box">
+                    <div id="tick_handle_right" class="update-pull-switch"></div>
+                    <div id="tick_content">
+                        <div id="tick_title">TITLE SPONSOR</div>
+                        <div id="tick_spons_img">
+                            <img src="{% static 'images/spons/tatasteel.png' %}">
+                        </div>
+                    </div>
+                    <div id="tick_handle"></div>
+                </div>
+            </div>
+
+           <div class="menu-leftarrow">
+                <img src="{% static 'images/menu/leftarrow.png' %}" alt="" onclick="rotateAntiClockWise();"  hidden/>
+            </div> 
+
+            <div class="menu-carousel">
+
+                <div class="menu-content-text" style="margin-top: 30px;">
+                {% for desc in menuDesc %}
+                    <div class="menu-content-text-{{desc.menu}}">
+                        <p>{{desc.message|safe|escape}}</p>
+                    </div>
+                {% endfor %}
+                </div>
+                 <!--<div class="menu-content-text1" style="margin-top: -30px;">
+                {% for desc in menuDesc %}
+                    <div class="menu-content-text1-{{desc.menu}}">
+                        <p>{{desc.message1|safe|escape}}</p>
+                    </div>
+                {% endfor %}
+                </div> -->
+                <div id="b-carousel">
+                    <a href="#spons-page-container">
+                        <div class="main_n0">
+                            <img src="{% static 'images/menu/icons/sp.png' %}">
+                        </div>
+                    </a>
+                    <a href='#events_container'>
+                        <div class="main_n1">
+                            <img src="{% static 'images/menu/icons/ev.png' %}">
+                        </div>
+                    </a>
+                    <a href='#contacts-page-container'>
+                        <div class="main_n2">
+                            <img src="{% static 'images/menu/icons/ct.png' %}">
+                        </div>
+                    </a>
+                    <a href='#exhibitions_container'>
+                        <div class="main_n3">
+                            <img src="{% static 'images/menu/icons/ex.png' %}">
+                        </div>
+                    </a>
+                    <a href='#workshop_container'>
+                        <div class="main_n4">
+                            <img src="{% static 'images/menu/icons/ws.png' %}">
+                        </div>
+                    </a>
+                    <a href='#megashows_container'>
+                        <div class="main_n5">
+                            <img src="{% static 'images/menu/icons/ms.png' %}">
+                        </div>
+                    </a>
+                    <a href='#guests_container'>
+                        <div class="main_n6">
+                            <img src="{% static 'images/menu/icons/gl.png' %}">
+                        </div>
+                    </a>
+                    <a href='#contacts-page-container'>
+                        <div class="main_n7">
+                            <img src="{% static 'images/menu/icons/ct.png' %}">
+                        </div>
+                    </a>
+                    <a href='#events_container'>
+                        <div class="main_n8">
+                            <img src="{% static 'images/menu/icons/ev.png' %}">
+                        </div>
+                    </a>
+
+
+                    <!-- <div class="n10"><img src="{% static 'img/spons/home.png' %}"></div>
+                        <div class="n11"><img src="{% static 'img/spons/home.png' %}"></div> -->
+                </div>
+
+
+                
+
+                <img id="menu-arc-centre" src="{% static 'images/menu/arc.png' %}" alt="">
+            </div>
+            <!-- <div id="archives_blank" class="archives_blank">
+                <div class="archives_div" id="archives_div">
+                    <img src ="http://2014.ktj.in/static/newimages/8.png" />
+                    <table border=0>
+                    <tr><td><a target="_blank" href="http://2014.ktj.in">2014</a></td></tr>
+                    <tr><td><a target="_blank" href="http://2013.ktj.in">2013</a></td></tr>
+                    </table>
+                </div>
+            </div> 
+            <div id="archives" onclick="archives()" class="archives"><img src="http://2014.ktj.in/static/newimages/9.png"></div>-->
+            <!-- <div id="kalworkshop_button"><span style="width:400px;" onclick="$('#kalworkshop').show();">Kolkata Workshop</span></div> -->
+            <div id="home_page_reg" onclick="openRegister();">Register</div>
+            <div id="home_page_login" onclick="openLogin();">Login</div>
+
+            <div class="menu-rightarrow">
+                <img src="{% static 'images/menu/rightarrow.png' %}" alt="" onclick="rotateClockWise();" hidden/>
+            </div>
+
+            <div id="update_pullout">
+                <div id="update_side_circle" class="up_pullout">
+                    <img src="{% static 'images/menu/update_circle.png' %}">
+                </div>    
+                <div id="update_display_box" class >
+                    <div id="update_handle_right"><p>UPDATES</p></div>
+                    <div id="update_content">
+                        <div id="update_title">UPDATES</div>
+                        <div id="update_points" class="scroll">
+                        <ul>
+                            {% for upd in updates %}
+                            <li>{{ upd.message }}</li>
+                            {% endfor %}
+                        </ul>
+                        </div>
+                    </div>
+                    <div id="update_handle"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- ===================================================== -->
+<!-- =================The Main Menu Ends================== -->
+<!-- ===================================================== -->
+
+
+
+<!-- ===================================================== -->
+<!-- =================The Spons Page Starts=============== -->
+<!-- ===================================================== -->
+    <div id="spons-page-container" class="section-container">
+        <!-- Top right home button -->
+        <div class="spons-guide-home" >
+            <a href="#main_container" onclick="changeUrl('home');">
+                <img src="{% static 'images/spons/home.png' %}" alt="" class="home-icon-small"/>
+                <span class="icon-small-title" style="color:black;">Home</span>
+            </a>
+            <img src="{% static 'images/spons/login.png' %}" alt="" class="login-icon-small" />
+            <span class="icon-small-title">SIGNIN</span>
+            <img src="{% static 'images/spons/register.png' %}" alt="" class="register-icon-small">
+            <span class="icon-small-title">SIGNUP</span>
+
+        </div>
+        <!-- <Bottom right button 
+        <div class="spons-guide-bottom">
+            <img src="{% static 'images/spons/bottom.png' %}" alt="">
+        </div> -->
+        <!-- left sideline bar -->
+        <div class="spons-sideline">
+            <img src="{% static 'images/spons/sideline_spons.png' %}" alt="">
+            
+            <div class="icon_menu_holder">
+                <div class="menu_img_container">
+                    <a href="#spons-page-container" onclick="changeUrl('sponsors');">    
+                        <img src="{% static 'images/menu/nav_icons/sponsors.png' %}" class="menu_img_spons">
+                        <span class="icon_menu_title">Sponsors</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#event_container" onclick="changeUrl('events');">    
+                        <img src="{% static 'images/menu/nav_icons/events.png' %}" class="menu_img_events">
+                        <span class="icon_menu_title">Events</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#exhibitions_container" onclick="changeUrl('exhibitions');">    
+                        <img src="{% static 'images/menu/nav_icons/exhibitions.png' %}" class="menu_img_exhibitions">
+                        <span class="icon_menu_title">Exhibitions 2014</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#workshops_container" onclick="changeUrl('workshops');">    
+                        <img src="{% static 'images/menu/nav_icons/workshops.png' %}" class="menu_img_workshops">
+                        <span class="icon_menu_title">Workshops</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#guests_container" onclick="changeUrl('guests');">    
+                        <img src="{% static 'images/menu/nav_icons/guests.png' %}" class="menu_img_guests">
+                        <span class="icon_menu_title">Guests</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#megashows_container" onclick="changeUrl('megashows');">    
+                        <img src="{% static 'images/menu/nav_icons/megashows.png' %}" class="menu_img_megashows">
+                        <span class="icon_menu_title">Megashows</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#contacts-page-container" onclick="changeUrl('contacts');">    
+                        <img src="{% static 'images/menu/nav_icons/contacts.png' %}" class="menu_img_contacts">
+                        <span class="icon_menu_title">Contacts</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wrapper for page content -->
+        <div class="spons-content">
+            <div id="spons-year-index">
+                {% for year in years.all %}
+                <div class="{% if forloop.first %}spons_tab_visible{% else %}spons_tab_invisible{% endif %}" id="spons_tab_{{year.year}}" 
+                    onclick="changeSponsYear({{year.year}})">
+                  <span>{{year.year}}</span>
+                </div>
+                {% endfor %}
+            </div>
+            
+            {% for year in years.all %}
+            <!-- Sponsor page -->
+            <div class="scroll spons-year-page {% if forloop.first %} spons_visible {% else %} spons_invisible {% endif %}" 
+            id="spons-page-{{year}}">
+            {% for post in year.post_set.all|dictsort:"rank" %}
+                <div class="spons-post-group">
+                    <h3>{{post.name}}</h3>
+                    <img src="{% static 'images/spons/line.png' %}" alt="" class="spons-item-line">
+                    <div class="sponsor-container">
+                    {% for sponsor in post.sponsor_set.all|dictsort:"rank" %}
+                        <a class='sponsor-item-single {% if sponsor.special %} sponsorSpecial {% endif %} {% if sponsor.bigger %} sponsorBig {% endif %}' href="{{sponsor.link}}" target="_blank">
+                            <img src='{{sponsor.image}}' class="spons-item-logo" />
+                        </a>
+                    {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+<!-- ===================================================== -->
+<!-- =================The Spons page Ends================= -->
+<!-- ===================================================== -->
+
+
+<!-- ===================================================== -->
+<!-- =================The Events Page Starts============== -->
+<!-- ===================================================== -->
+
+
+    <div id="event_container" class="section-container">
+
+        <div class="ev_sideline">
+            <img src="{% static 'images/events/sideline_ev.png' %}">
+            <div class="icon_menu_holder">
+                <div class="menu_img_container">
+                    <a href="#spons-page-container" onclick="changeUrl('sponsors');">    
+                        <img src="{% static 'images/menu/nav_icons/sponsors.png' %}" class="menu_img_spons">
+                        <span class="icon_menu_title">Sponsors</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#event_container" onclick="changeUrl('events');">    
+                        <img src="{% static 'images/menu/nav_icons/events.png' %}" class="menu_img_events">
+                        <span class="icon_menu_title">Events</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#exhibitions_container" onclick="changeUrl('exhibitions');">    
+                        <img src="{% static 'images/menu/nav_icons/exhibitions.png' %}" class="menu_img_exhibitions">
+                        <span class="icon_menu_title">Exhibitions 2014</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#workshops_container" onclick="changeUrl('workshops');">    
+                        <img src="{% static 'images/menu/nav_icons/workshops.png' %}" class="menu_img_workshops">
+                        <span class="icon_menu_title">Workshops</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#guests_container" onclick="changeUrl('guests');">    
+                        <img src="{% static 'images/menu/nav_icons/guests.png' %}" class="menu_img_guests">
+                        <span class="icon_menu_title">Guests</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#megashows_container" onclick="changeUrl('megashows');">    
+                        <img src="{% static 'images/menu/nav_icons/megashows.png' %}" class="menu_img_megashows">
+                        <span class="icon_menu_title">Megashows</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#contacts-page-container" onclick="changeUrl('contacts');">    
+                        <img src="{% static 'images/menu/nav_icons/contacts.png' %}" class="menu_img_contacts">
+                        <span class="icon_menu_title">Contacts</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="event-sideline-filler">
+            </div>
+
+        </div>
+
+        <div class="spons-guide-home">
+            <a href="#main_container" onclick="changeUrl('home');">
+                <img src="{% static 'images/spons/home.png' %}" alt="" class="home-icon-small"/>
+                <span class="icon-small-title" style="color:white;">Home</span>
+            </a>
+            <img src="{% static 'images/spons/login.png' %}" alt="" class="login-icon-small" />
+            <span class="icon-small-title">SIGNIN</span>
+            <img src="{% static 'images/spons/register.png' %}" alt="" class="register-icon-small">
+            <span class="icon-small-title">SIGNUP</span>
+        </div>
+
+        {% for genre in genres %}
+        {% if forloop.first %}
+        <div class="mid_container_genre_selected" id="genre_{{genre.id}}">
+        {% else %}
+        <div class="mid_container_genre" id="genre_{{genre.id}}">
+        {% endif %}
+            {% for event in genre.event_set.all %}
+                {% if forloop.first %}
+                <div id="event_info_{{event.id}}" class="event_container_selected">
+                {% else %}
+                <div id="event_info_{{event.id}}" class="event_container">
+                {% endif %}
+
+                    <div id="center_pane">
+                        <div id="event_name">
+                            <div id="ev_title">{{event.name}}</div>
+                            <div id="ev_oneliner">{{event.onliner}}</div>
+                        </div>
+                        <div class="top_pane_events">
+                            {% if event.introduction != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_1" class="logo_container_right_select" onclick="changeEventInfo(1,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg" id="ev_intro" onclick="changeEventInfo(1,{{event.id}});">INTRODUCTION</span>
+                            </div>
+                            {% endif %}
+                            {% if event.rules != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_2" class="logo_container_right" onclick="changeEventInfo(2,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg"  id="ev_rules" onclick="changeEventInfo(2,{{event.id}});">RULES & REGULATIONS</span>
+                            </div>
+                            {% endif %}
+                            {% if event.judging != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_3" class="logo_container_right" onclick="changeEventInfo(3,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg"  id="ev_rules" onclick="changeEventInfo(3,{{event.id}});">JUDGING PARAMETERS</span>
+                            </div>
+                            {% endif %}
+                            {% if event.prizes != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_4" class="logo_container_right" onclick="changeEventInfo(4,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg"  id="ev_prize" onclick="changeEventInfo(4,{{event.id}});">PRIZES</span>
+                            </div>
+                            {% endif %}
+                            {% if event.problemStatement != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_5" class="logo_container_right" onclick="changeEventInfo(5,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg"  id="ev_ps" onclick="changeEventInfo(5,{{event.id}});">PROBLEM STATEMENT</span>
+                            </div>
+                            {% endif %}
+                            {% if event.register != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_6" class="logo_container_right" onclick="changeEventInfo(6,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg"  id="ev_register" onclick="changeEventInfo(6,{{event.id}});">REGISTER</span>
+                            </div>
+                            {% endif %}
+                            {% if event.contact != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_7" class="logo_container_right" onclick="changeEventInfo(7,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg"  id="ev_contact" onclick="changeEventInfo(7,{{event.id}});">CONTACT</span>
+                            </div>         
+                            {% endif %}
+                            {% if event.results != '' %}
+                            <div class="nav_li_right">
+                                <div id="info_cont_8" class="logo_container_right" onclick="changeEventInfo(8,{{event.id}});">
+                                    <img src="{% static 'images/events/genre/points.png' %}" class="logo_img_right">
+                                </div>
+                                <span class="ev_togg"  id="ev_results" onclick="changeEventInfo(8,{{event.id}});">RESULT</span>
+                            </div>         
+                            {% endif %}
+                        </div>
+                        <div id="event_details">
+                            <div id="ev_topbar">
+                                <div id="logo_spons">
+                                    <img src="{{event.sponsor}}" class="spons_img_ev" />
+                                </div>
+                                <div id="ev_quote"><i>{{event.quote|safe|escape}}</i></div>
+                            </div>
+                        {% if event.introduction != '' %}
+                            <div id='event_{{event.id}}_01' class='event-matter-selected scroll'>{{event.introduction|safe|escape}}</div>
+                        {% endif %}
+                        {% if event.rules != '' %}
+                            <div id='event_{{event.id}}_02' class='scroll event-matter'>{{event.rules|safe|escape}}</div>
+                        {% endif %}
+                        {% if event.judging != '' %}
+                            <div id='event_{{event.id}}_03' class='scroll event-matter'>{{event.judging|safe|escape}}</div>
+                        {% endif %}
+                        {% if event.prizes != '' %}
+                            <div id='event_{{event.id}}_04' class='scroll event-matter'>{{event.prizes|safe|escape}}</div>
+                        {% endif %}
+                        {% if event.problemStatement != '' %}
+                            <div id='event_{{event.id}}_05' class='scroll event-matter'>{{event.problemStatement|safe|escape}}</div>
+                        {% endif %}
+                        {% if event.register != '' %}
+                            <div id='event_{{event.id}}_06' class='scroll event-matter event_reg_reset'><span class="event_reg" onclick="event_reg({{event.id}})">Click Here</span> to Register for this event.<div id='event_{{event.id}}_06_01'></div></div>
+                        {% endif %}
+                        {% if event.contacts != '' %}
+                            <div id='event_{{event.id}}_07' class='scroll event-matter'>{{event.contacts|safe|escape}}</div>
+                        {% endif %}
+                        {% if event.results != '' %}
+                            <div id='event_{{event.id}}_08' class='scroll event-matter'>{{event.results|safe|escape}}</div>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+                <div id="ev_tile_group">
+                    {% for event in genre.event_set.all %}
+                        <div class="ev_tile" id="ev_{{event.id}}" onclick="changeEvent({{event.id}});">
+                    {% if forloop.first %}
+                        <span class="overlay_tile_ev_select">{{event.name}}</span>
+                    {% else %}
+                            <span class="overlay_tile_ev">{{event.name}}</span>
+                    {% endif %}
+                            <img src="{{event.image}}" class="tile_img" />
+                        </div>
+                    {% endfor %}              
+                </div>
+        </div>    
+        {% endfor %}
+
+        <div class="icon_genre_holder">
+            {% for genre in genres %}
+                {% if forloop.first %}
+                <div class="select_genre_container" id="cont_genre_{{genre.id}}" onclick="changeGenre({{genre.id}});">
+                {% else %}
+                <div class="genre_container" id="cont_genre_{{genre.id}}" onclick="changeGenre({{genre.id}});">
+                {% endif %}
+                    <span id="ev_{{genre.id}}" class="ev_button" onclick="changeGenre({{genre.id}});">{{genre.name}}</span>
+                    <img src="{{genre.image}}" class="genre_img">
+                </div>
+            {% endfor%}
+        </div> 
+
+
+
+
+    </div>
+<!-- ===================================================== -->
+<!-- =================The Event page Ends================= -->
+<!-- ===================================================== -->
+
+
+<!-- ===================================================== -->
+<!-- =============The Exhibition Page Starts============== -->
+<!-- ===================================================== -->
+
+    <div id="exhibitions_container" class="section-container">
+
+        <!-- left sideline bar -->
+        <div class="exhi-sideline">
+            
+            <img src="{% static 'images/exhibitions/sideline_exhi.png' %}" alt="">
+
+            <div class="icon_menu_holder">
+                <div class="menu_img_container">
+                    <a href="#spons-page-container" onclick="changeUrl('sponsors');">    
+                        <img src="{% static 'images/menu/nav_icons/sponsors.png' %}" class="menu_img_spons">
+                        <span class="icon_menu_title">Sponsors</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#event_container" onclick="changeUrl('events');">    
+                        <img src="{% static 'images/menu/nav_icons/events.png' %}" class="menu_img_events">
+                        <span class="icon_menu_title">Events</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#exhibitions_container" onclick="changeUrl('exhibitions');">    
+                        <img src="{% static 'images/menu/nav_icons/exhibitions.png' %}" class="menu_img_exhibitions">
+                        <span class="icon_menu_title">Exhibitions 2014</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#workshops_container" onclick="changeUrl('workshops');">    
+                        <img src="{% static 'images/menu/nav_icons/workshops.png' %}" class="menu_img_workshops">
+                        <span class="icon_menu_title">Workshops</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#guests_container" onclick="changeUrl('guests');">    
+                        <img src="{% static 'images/menu/nav_icons/guests.png' %}" class="menu_img_guests">
+                        <span class="icon_menu_title">Guests</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#megashows_container" onclick="changeUrl('megashows');">    
+                        <img src="{% static 'images/menu/nav_icons/megashows.png' %}" class="menu_img_megashows">
+                        <span class="icon_menu_title">Megashows</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#contacts-page-container" onclick="changeUrl('contacts');">    
+                        <img src="{% static 'images/menu/nav_icons/contacts.png' %}" class="menu_img_contacts">
+                        <span class="icon_menu_title">Contacts</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="spons-guide-home">
+            <a href="#main_container" onclick="changeUrl('home');">
+                <img src="{% static 'images/spons/home.png' %}" alt="" class="home-icon-small"/>
+                <span class="icon-small-title" style="color:black;">Home</span>
+            </a>
+            <img src="{% static 'images/spons/login.png' %}" alt="" class="login-icon-small" />
+            <span class="icon-small-title">SIGNIN</span>
+            <img src="{% static 'images/spons/register.png' %}" alt="" class="register-icon-small">
+            <span class="icon-small-title">SIGNUP</span>
+        </div>
+        
+        <div id="desc_exhi">
+            <div id="desc_exhi_heading">
+                {{exhibitions.0.name}}
+            </div>
+            <div id="exhi_nation" style="padding-top: 10px;">
+                <div id="exhi_flag">
+                            <img src= "{{exhibitions.0.country_flag}}" class="flag">
+                </div>
+                <div id="country" style="padding: 10px; font-size: 25px;">
+                    {{exhibitions.0.country}}
+                </div>
+            </div>
+
+            <div id="desc_exhi_write">
+                {{exhibitions.0.description}}
+            </div>
+        </div>
+
+        <div id="images">
+
+        {% for exh in exhibitions %}
+
+            {% if forloop.first %}
+                <div class="exhi_img_sel" id="ex_img{{exh.id}}" onclick="changeExhibition({{exh.id}});">
+            {% else %}
+                <div class="exhi_img" id="ex_img{{exh.id}}" onclick="changeExhibition({{exh.id}});">
+            {% endif %}
+                <img class="inner-image" src="{{exh.image}}"/>
+            </div>
+
+        {% endfor %}
+
+        </div>
+    
+    </div>
+
+
+<!-- ===================================================== -->
+<!-- =============The Exhibition Page Ends================ -->
+<!-- ===================================================== -->
+
+
+<!-- ===================================================== -->
+<!-- =============The Workshop Page Starts================ -->
+<!-- ===================================================== -->
+    <div id="workshops_container" class="section-container">
+        <!-- left sideline bar -->
+        <div class="ws-sideline" style="z-index:10;">
+            <img src="{% static 'images/workshops/sideline_ws.png' %}" alt="">
+
+            <div class="icon_menu_holder">
+                <div class="menu_img_container">
+                    <a href="#spons-page-container" onclick="changeUrl('sponsors');">    
+                        <img src="{% static 'images/menu/nav_icons/sponsors.png' %}" class="menu_img_spons">
+                        <span class="icon_menu_title">Sponsors</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#event_container" onclick="changeUrl('events');">    
+                        <img src="{% static 'images/menu/nav_icons/events.png' %}" class="menu_img_events">
+                        <span class="icon_menu_title">Events</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#exhibitions_container" onclick="changeUrl('exhibitions');">    
+                        <img src="{% static 'images/menu/nav_icons/exhibitions.png' %}" class="menu_img_exhibitions">
+                        <span class="icon_menu_title">Exhibitions 2014</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#workshops_container" onclick="changeUrl('workshops');">    
+                        <img src="{% static 'images/menu/nav_icons/workshops.png' %}" class="menu_img_workshops">
+                        <span class="icon_menu_title">Workshops</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#guests_container" onclick="changeUrl('guests');">    
+                        <img src="{% static 'images/menu/nav_icons/guests.png' %}" class="menu_img_guests">
+                        <span class="icon_menu_title">Guests</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#megashows_container" onclick="changeUrl('megashows');">    
+                        <img src="{% static 'images/menu/nav_icons/megashows.png' %}" class="menu_img_megashows">
+                        <span class="icon_menu_title">Megashows</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#contacts-page-container" onclick="changeUrl('contacts');">    
+                        <img src="{% static 'images/menu/nav_icons/contacts.png' %}" class="menu_img_contacts">
+                        <span class="icon_menu_title">Contacts</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="spons-guide-home" style="color:white; z-index:10;">
+            <a href="#main_container" onclick="changeUrl('home');">
+                <img src="{% static 'images/spons/home.png' %}" alt="" class="home-icon-small"/>
+                <span class="icon-small-title" style="color:white;">Home</span>
+            </a>
+            <img src="{% static 'images/spons/login.png' %}" alt="" class="login-icon-small" />
+            <span class="icon-small-title">SIGNIN</span>
+            <img src="{% static 'images/spons/register.png' %}" alt="" class="register-icon-small">
+            <span class="icon-small-title">SIGNUP</span>
+        </div>
+        
+        {% for ws in workshops %}
+
+        <div id="click_content_{{forloop.counter}}">
+            <div id="close_box" onclick="closeWork({{forloop.counter}});">
+                X
+            </div>
+
+            <div id="heading_work" style="margin-bottom:50px; text-align:left;">
+                <h1 style="width:600px;">{{ws.name}}</h1>
+                <img src="{{ws.company_img}}" style="margin-left: -5px; float: right; margin-top: -80px; margin-right: 50px; height: 100px;"/>
+            </div>
+            
+            <div id="click_main">
+            {{ws.introduction}}
+            </div>
+
+            <div id="click_img">
+            <img src="{{ws.image}}">
+            </div>
+            <br>
+        </div>
+        
+        {% endfor %}
+
+        <div id="workshop_mid_container">
+            {% for ws in workshops %}
+                <div id="boxcont{{forloop.counter}}" class="ws_cont">
+                    <div class="boxlogo" id="boxl{{forloop.counter}}" onclick="dispWork({{forloop.counter}});">
+                        <h2 class="headings">
+                            <img src="{{ws.company_img}}" id="ws_img_{{forloop.counter}}" class="logows"/>
+                        </h2>
+                    </div>
+        
+                    <div class="boxtext" id="boxt{{forloop.counter}}" onclick="dispWork({{forloop.counter}});">
+                        <h2 class="headings">{{ws.name}}</h2>
+                    </div>
+                </div>
+            {% endfor %}
+        
+        
+                <div id="workshop_logo">
+                    <h2 class="headings" style="text-shadow: 1px 1px 1px black;">
+                    <img src="{% static 'images/workshops/2014/WS.png' %}" style="width:150px; height:120px; margin-top: -45px;" />
+                    </h2>
+                </div>
+        
+                <div id="desc_workshop">
+                    <p></p>
+                </div>
+        </div>
+    </div>
+
+
+
+<!-- ===================================================== -->
+<!-- =============The Workshop Page Ends================== -->
+<!-- ===================================================== -->
+
+
+<!-- ===================================================== -->
+<!-- ===============The Guests Page Starts================ -->
+<!-- ===================================================== -->
+    <div id="guests_container" class="section-container">
+
+        <div class="gl_sideline">
+            <img src="{% static 'images/guests/sideline_gl.png' %}">
+
+            <div class="icon_menu_holder">
+                <div class="menu_img_container">
+                    <a href="#spons-page-container" onclick="changeUrl('sponsors');">    
+                        <img src="{% static 'images/menu/nav_icons/sponsors.png' %}" class="menu_img_spons">
+                        <span class="icon_menu_title">Sponsors</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#event_container" onclick="changeUrl('events');">    
+                        <img src="{% static 'images/menu/nav_icons/events.png' %}" class="menu_img_events">
+                        <span class="icon_menu_title">Events</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#exhibitions_container" onclick="changeUrl('exhibitions');">    
+                        <img src="{% static 'images/menu/nav_icons/exhibitions.png' %}" class="menu_img_exhibitions">
+                        <span class="icon_menu_title">Exhibitions 2014</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#workshops_container" onclick="changeUrl('workshops');">    
+                        <img src="{% static 'images/menu/nav_icons/workshops.png' %}" class="menu_img_workshops">
+                        <span class="icon_menu_title">Workshops</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#guests_container" onclick="changeUrl('guests');">    
+                        <img src="{% static 'images/menu/nav_icons/guests.png' %}" class="menu_img_guests">
+                        <span class="icon_menu_title">Guests</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#megashows_container" onclick="changeUrl('megashows');">    
+                        <img src="{% static 'images/menu/nav_icons/megashows.png' %}" class="menu_img_megashows">
+                        <span class="icon_menu_title">Megashows</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#contacts-page-container" onclick="changeUrl('contacts');">    
+                        <img src="{% static 'images/menu/nav_icons/contacts.png' %}" class="menu_img_contacts">
+                        <span class="icon_menu_title">Contacts</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="spons-guide-home">
+            <a href="#main_container" onclick="changeUrl('home');">
+                <img src="{% static 'images/spons/home.png' %}" alt="" class="home-icon-small"/>
+                <span class="icon-small-title" style="color:black;">Home</span>
+            </a>
+            <img src="{% static 'images/spons/login.png' %}" alt="" class="login-icon-small" />
+            <span class="icon-small-title">SIGNIN</span>
+            <img src="{% static 'images/spons/register.png' %}" alt="" class="register-icon-small">
+            <span class="icon-small-title">SIGNUP</span>
+        </div>
+
+        <div id="main_gl">
+            <div id="gl_heading">
+                Guest Lectures 2014
+            </div>
+
+            <div id="desc_gl">
+                "Veneration is the true recognition to the great gifts that the society treasures and craves for with eyes of admiration"                
+            </div>
+
+            <div id="tiles_gl">
+
+            {% for guest in guests %}
+
+                <div class="gl_tile" id="gl_{{guest.id}}" onclick="changeGLDesc({{guest.id}})">
+                    <div class="overlay_tile_gl">{{guest.name}}</div>
+                    <div class="gl_tile_img" style="background: url({{guest.image}});"><p>{{guest.name}}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- ===================================================== -->
+<!-- ===============The Guests Page Ends================== -->
+<!-- ===================================================== -->
+<!-- ===================================================== -->
+<!-- ============The Megashows Page Starts================ -->
+<!-- ===================================================== -->
+    <div id="megashows_container" class="section-container">
+
+        <div class="ms_sideline">
+            <img src="{% static 'images/megashows/sideline_ms.png' %}">
+
+            <div class="icon_menu_holder">
+                <div class="menu_img_container">
+                    <a href="#spons-page-container" onclick="changeUrl('sponsors');">    
+                        <img src="{% static 'images/menu/nav_icons/sponsors.png' %}" class="menu_img_spons">
+                        <span class="icon_menu_title">Sponsors</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#event_container" onclick="changeUrl('events');">    
+                        <img src="{% static 'images/menu/nav_icons/events.png' %}" class="menu_img_events">
+                        <span class="icon_menu_title">Events</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#exhibitions_container" onclick="changeUrl('exhibitions');">    
+                        <img src="{% static 'images/menu/nav_icons/exhibitions.png' %}" class="menu_img_exhibitions">
+                        <span class="icon_menu_title">Exhibitions 2014</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#workshops_container" onclick="changeUrl('workshops');">    
+                        <img src="{% static 'images/menu/nav_icons/workshops.png' %}" class="menu_img_workshops">
+                        <span class="icon_menu_title">Workshops</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#guests_container" onclick="changeUrl('guests');">    
+                        <img src="{% static 'images/menu/nav_icons/guests.png' %}" class="menu_img_guests">
+                        <span class="icon_menu_title">Guests</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#megashows_container" onclick="changeUrl('megashows');">    
+                        <img src="{% static 'images/menu/nav_icons/megashows.png' %}" class="menu_img_megashows">
+                        <span class="icon_menu_title">Megashows</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#contacts-page-container" onclick="changeUrl('contacts');">    
+                        <img src="{% static 'images/menu/nav_icons/contacts.png' %}" class="menu_img_contacts">
+                        <span class="icon_menu_title">Contacts</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="spons-guide-home" style="z-index:4;">
+            <a href="#main_container" onclick="changeUrl('home');">
+                <img src="{% static 'images/spons/home.png' %}" alt="" class="home-icon-small"/>
+                <span class="icon-small-title" style="color:white;">Home</span>
+            </a>
+            <img src="{% static 'images/spons/login.png' %}" alt="" class="login-icon-small" />
+            <span class="icon-small-title">Signin</span>
+            <img src="{% static 'images/spons/register.png' %}" alt="" class="register-icon-small">
+            <span class="icon-small-title">Signup</span>
+        </div>
+
+
+        <div id="mega_circle_centre">
+            <h1>Megashows 2014</h1>
+            <div id="ms_image_container">
+                <!-- <img id="mega_img1" src="{% static 'images/megashows/circ_ms.png' %}" /> -->
+                <div id="mega_img1"></div>
+                <img id="mega_img2" src="{% static 'images/megashows/tri_ms.png' %}" />
+                <div id="ms_name_box">
+                {% for ms in megashows %}
+                    <div id="mega_{{forloop.counter}}" class="ms_name" onclick="changeMS({{forloop.counter}})">&#9830;&nbsp;{{ms.name}}</div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        {% for ms in megashows %}
+            {% if forloop.first %}
+                <div id="ms_heading_{{forloop.counter}}" class="heading-ms-visible">
+            {% else %}
+                <div id="ms_heading_{{forloop.counter}}" class="heading-ms">
+            {% endif %}
+                    <h1 >{{ms.name}}</h1>
+                </div>
+        {% endfor %}
+
+        <div id="megashow_text">
+            <p>{{megashows.0.description}}</p>
+        </div>
+    </div>
+
+
+<!-- ===================================================== -->
+<!-- ============The Megashows Page Ends================== -->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- =============The Contacts Page Starts================ -->
+<!-- ===================================================== -->
+
+    <div id="contacts-page-container" class="section-container">
+
+        <div class="contacts_sideline">
+            <img src="{% static 'images/contacts/sideline_contacts.png' %}">
+
+            <div class="icon_menu_holder">
+                <div class="menu_img_container">
+                    <a href="#spons-page-container" onclick="changeUrl('sponsors');">    
+                        <img src="{% static 'images/menu/nav_icons/sponsors.png' %}" class="menu_img_spons">
+                        <span class="icon_menu_title">Sponsors</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#event_container" onclick="changeUrl('events');">    
+                        <img src="{% static 'images/menu/nav_icons/events.png' %}" class="menu_img_events">
+                        <span class="icon_menu_title">Events</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#exhibitions_container" onclick="changeUrl('exhibitions');">    
+                        <img src="{% static 'images/menu/nav_icons/exhibitions.png' %}" class="menu_img_exhibitions">
+                        <span class="icon_menu_title">Exhibitions 2014</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#workshops_container" onclick="changeUrl('workshops');">    
+                        <img src="{% static 'images/menu/nav_icons/workshops.png' %}" class="menu_img_workshops">
+                        <span class="icon_menu_title">Workshops</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#guests_container" onclick="changeUrl('guests');">    
+                        <img src="{% static 'images/menu/nav_icons/guests.png' %}" class="menu_img_guests">
+                        <span class="icon_menu_title">Guests</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#megashows_container" onclick="changeUrl('megashows');">    
+                        <img src="{% static 'images/menu/nav_icons/megashows.png' %}" class="menu_img_megashows">
+                        <span class="icon_menu_title">Megashows</span>
+                    </a>
+                </div>
+                <div class="menu_img_container">
+                    <a href="#contacts-page-container" onclick="changeUrl('contacts');">    
+                        <img src="{% static 'images/menu/nav_icons/contacts.png' %}" class="menu_img_contacts">
+                        <span class="icon_menu_title">Contacts</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="spons-guide-home">
+            <a href="#main_container" onclick="changeUrl('home');">
+                <img src="{% static 'images/spons/home.png' %}" alt="" class="home-icon-small"/>
+                <span class="icon-small-title" style="color:black;">Home</span>
+            </a>
+            <img src="{% static 'images/spons/login.png' %}" alt="" class="login-icon-small" />
+            <span class="icon-small-title">SIGNIN</span>
+            <img src="{% static 'images/spons/register.png' %}" alt="" class="register-icon-small">
+            <span class="icon-small-title">SIGNUP</span>
+        </div>
+
+        <!-- Wrapper for page content -->
+        <div class="contact-content">
+
+            <!-- Contacts item -->
+            <div class="scroll contact-item">
+                <p class="contact-item-title">
+                    Technology Students' Gymkhana
+                </p>
+                <img src="{% static 'images/spons/line.png' %}" alt="" class="spons-item-line">
+                
+                <div class="contact-category">
+                    <div class="contact-item-single">
+                        <p class="contact-name">Indian Institute of Technology, Kharagpur</p>
+                        <p class="contact-number">Fax: +91-3222 281187</p>
+                        <a href="mailto:admin@ktj.in" target="_blank"><i class="contact-email">admin@ktj.in</i></a>
+                    </div>
+                </div>
+
+
+            {% for post in contactPost|dictsort:"rank" %}
+                <p class="contact-item-title">
+                    {{post.name}}
+                </p>
+                <img src="{% static 'images/spons/line.png' %}" alt="" class="spons-item-line">
+                
+                <div class="contact-category">
+
+                {% for p in post.contact_set.all %}
+
+                <!-- Contact single item -->
+                    <div class="contact-item-single">
+                        <a href="{{p.social_link}}" target="_blank"><p class="contact-name">{{p.name}}</p></a>
+                        <p class="contact-number">+91{{p.phone}}</p>
+                        <a href="mailto:{{p.email}}" target="_blank"><i class="contact-email">{{p.email}}</i></a>
+                    </div>
+
+                {% endfor %}
+                </div>
+            {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+
+<!-- ===================================================== -->
+<!-- =============The Contacts Page Ends================== -->
+<!-- ===================================================== -->
+
+<!-- ===================================================== -->
+<!-- ================The Social Begins==================== -->
+<!-- ===================================================== -->
+
+    <div id="social_small_container">
+        <a href="https://www.facebook.com/ktj.iitkgp" target="_blank"><!-- Facebook -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAADI0lEQVQ4T42UW0gUURjHv3NmdmZ2V41uSAYF+RCpD+alh156MSqzDEmDMO0tSbpARkmpk9ekwpXIIiiTgsAodV21pKwIJMFLRBEtGJvmbVu11HV3dWdOZ1Z3XccROk8z5/uf3/mf7zvnQ6AxRFFkR5m4/Rgz8awsJRCE4xdkqFvGUjdIcrd9+9yrZxkZkno5Uk/kFpijsYDr6PwiRGtLABmgS5al7LsFqd+DFQEgdYXt3M48hjDFVMBrY9SzxCXJ+ErN1WQTIER8Z/BLTpe3XGYIqdAC6VgGEqIjIC4qAgSeBZbFAHS51eaA+rY+cLudTY8qs48EgDmiJUbHkh66C6cGhhl5OJ+1GzasNazYq3/AAUVVL3xwbNAffFyR1YqUAjjY+C6EUJyWuxOHYyExZvOKkNfrBduv3yCazL4YLeCM3imvQzkl5hQdxs2r5az0XBIoLv1jYOQvdHy0wtZwIwyNTcLL918CMZ7XF6KzJU0iwUzRasDKC/tAT/PmH7cevoO+z1b666vBssFxwlsKNDcTjFP+B6gcM//GcxgZ+6MpZxndGDpTahmmtd6kVuzYthGU6malxgKnY2CewlwuF3R9ssG00+2T934dANugI7AUIUZaFVhGcxe6mDs/TL1p+4dv0Njepwa2mAGRQ2qxH7gaTNE/aeyCzp7+wFKG5UdQbrm5EBN8TQ3MOZYIoQYdrAlZKoii8UoECFkoyM377TA4MrFUZUFoR7kljckYsy1qoMftBOfUJNSUHF8WKrvTCkOj2kURDKEXUXp9PRNu1XfSi73Lv9IPU/7VwNLbrTBsXwnEDDcVGTaw3veWT5U3RnGE7aWfvMdFnU1PBlypgcXVFhh1TC1zTc0AbzAmPSjPfBNoDrlllkvzLuf1YJiWQ5EC7SogJwgNtZUn0xT9svb1czbSMueZPRD8CtQORVMz2MenfQ4VZzre0FCrzzwKIqItMgjoP0NWfl0K8cw/lSVviJbDwqpmcExMg5IzTuDSlGMGn39Fx1aC6WI9Z3S68ggme0z5aXsZhnZPelPodSFl9153jE/OtG0RflTTTuVV345/LbBB1fvL320AAAAASUVORK5CYII=">
+            </a>
+            <a href="https://plus.google.com/104120421291257586963" target="_blank"><!-- Google+ -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAADvUlEQVQ4T42Ua2yTVRjH/+ec923ftdvcYFzGGBM3LQgEA7NeYsgSjAoBIpNGI9sgBiVxmsmGZlKEdgYXjRmiDmMUCIFkQCUqyJhGM/UDCWZeSMREDOC20HY3lq4ddO/tePqO1bbMxfPxPP/nl+dOMMnjvgqpb3jeE5zoy0FZOThfbskouqDzLjDeNbtX+5oEAkamO8n86N62aZFMzMPCMA75r2fy8+YYNhV9dPTPVEkSyH0+Goxe3k5MNBEC+5SwW0bO+U0TxFu098h7AsQT30lguKGmUQia/w8oVaObJm5oxueu1mOVSWB4e/Vi0+Q/ExBbUizCpDl5YHn5IHJqwBxa71VwdQwJWJRKsBXMAsK9q8reb+sgiQaEInPPE0KWWTABylr2ELLcK6AP9MHuWgI2rQBmLIr4r+cQv/gb1L8uWrCIqiLrzrtR6NmMv9/xRhcOIp+E62rWcMZPT0SW+2QV5JJSXP9wD7ihg9gVTKvdCbloHqJfHcdo5xkLNqLp4IzBUVKG2ZXVuLJ3N2yEvUGu1df4KPjuBNB2l0s4exE7+xli355KZq/c9wDyqmthDA8i2PQKRsZU3HH/Iyh8ZgsIpaIkNphjccQv/REkofrqRHRrEt7Zj69H9mPrMfr9WURPtyWB1OHEzKb9MERkIjXc7L2StDnmj6d8WfxLhIRJaFtVUNStMKFwrlyHnNUboF3rwVDLzrSG53tboEo2dDduSftPBTLASANKMwsxvWEPiKjN0D6/6OatSGYVwfmiF+ql3xH6tCUNSGQZkpgG7foAxoENVafAydoJlbLUjVzPc8JkiNTboYv6SO4KaMFuBFvfmnJMJYYQCdVt3AVG/WnrIzorF8+HtPRBYEk5CDfRvWMrIGo41bMz+o1oyrOrAXYmU6gaJtjDK5GzaoNlGj55GNGffpwSmCWzVwn3eFh4rnJOLKF7Qp2AxUVdlFIX8p/aPL6k4o3+0IGh9sCkUInSkQUzFk63djn0sudeLim/UEWxK+s2gt6zGGY0An2oH2p/CE4xh3DmWKBox0kMd7bfBnVQ9mhp67Hvksehz1e7K/eFRr+WnYvg269bXft3ECnmbH0NklgzxCLoebM+DWijLP04JKz8xAkWcZcPav3BvPChfZOmVdL8ibXrqbMoS/RL1wfHK0VkVsduO7BX/S89fSPcd1BYHZnU4h3vijWT0eOvAyOI2QzJU/ZxW0fahEwWSqevQikemOM1oK8QN3KBAVKgiCMw4/kGEgkcuBC/0PWFOsCbFwUCaqb/P/ABbvHQTdipAAAAAElFTkSuQmCC"></a>
+            <a href="http://twitter.com/ktj_iitkgp" target="_blank"><!-- Twitter -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAADMElEQVQ4T5WU+08UVxTHv+femX0gdEMXFLRaTWuWLEpUiCZGTTT+UAq2xljS+Iv+EW2qYsuCEUh/Mv0HjDHxBzVBIRofPNJfWk0otWl80NruLkaxIpQg+xzuXO+MzDCwQPT8NufxmXPueRAWkVhMakW7Rj6THLVCyDpiqLXdiAZJYNBgcjDy6uNbTU3qa4HQQkVb/9/VOnznleEtZAmRMO/NIHf0+31Vw14XF6iyYr5dI98wkm0qE/9yMI8tI0DNJ/euPUtE0i7CMXbeiR8HZx3vCHLdpBAQ2WzXqQPRQy4wduvJJr+m/ab+4nsfoAXLp1KAlJC+ovpYw6c3yWpAYHfynipz27vAdE4I6hyTqRyMWZgVxxh/HclFS+nH3mSjydDjwEqDGvJCIpUvaCB2rPsAO9eHwGFicjqN5EQWAZ3hyuBzO5zrejOduROPcc5aHODWNcV24LUHrzA6lXeTXlXiw7G6CghVZjqTUVXaPcBU1sTloVG8zhjgmq+P2nsTPYxRoxNZU1mM+qoPIUyJ4bE0/hnPIj6RweaKYuzZUDIPZsV03X+J5HjaDieNv6CO/sRzAlV6S/6iugwVKiNHrGQyeQPCyLmZObazfQnXjwiiAPhJOIjDNeXz+jOjysx4ynSMpiT81B9fABxIdquRPOBomZrMg5vKsbEsaKuWglm2xEQOV38fdYGM81Hq7E3+AIZWb0ofhfxojIaxQoP9ZkvJ+bvP8H/K8AC123S6P/G5DrruDdJUml/XhFGiFY6O4/fXywxu/PnfvH9xPfAtXbok+b/hkV/UEm5338YwwPI5HNmxBqEAK0hwPC1w4den8/WcT8mhaNje5fYbySjzyyHrKGxfHUR0pV9tgwLNztpcJOGPZ9MYeDxW+AoB//6W+kifexw6BpLfybzRaaTTiKiZ27I2hJDaGjUKamtMxNVMDo1MqvFZ5Bk0ravFexys31nnS6t71C2MmYYlu7CIgeu+a80NkUPqsJiWueDAtl5/8CVmzIswZdGyYGLTPp2+OtFQfdPrVwC0sz03EGAVq5pJyD2mkFXSlGWWnjMaI84fqnn+WaTMjlhT9dyyz1LfALGoR/y2NGAfAAAAAElFTkSuQmCC">
+            </a>
+            <a href="http://www.youtube.com/user/ktjiitkgp" target="_blank"><!-- Youtube -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACxklEQVQ4T5WU30tUQRTHz5l7767mg1pW+iBRT5KBqOVjrOhKpRGZm9aLD/0DPRQJQq0F2UMPPhRUIBH0Q1vCbU2wDdEMAsEkQsQUcyMof7W7mu5ed/fONHPF67p31x8DFy7nnPnMOXPOfBGSLKfNJl/OkU4pwEpRwuOMklIRxhCGkfGPwvAhkvUeXS4tcTsmGiYvlRfKTH4GDHRIqsUAhiJUaixw9X6PjzGAzOkkvtFP1xghtxHBuhXM8DEWpkCaj7z2tnEQPwPAAE45KpsIwdYdgeKCopTCymq0q9gzWGsAx+qrjqUx9oVnZtkNUMD8agQoY5BB5NNFnoFeFA1oPCANAZKSTTBOz6yug5WhQYjNz5rOEbC/HMY4TCyJ4L8ya242TtRV1CgS6U7cIWVmQ/7jTmDRCCz1vIFFdwdQNayHRfTMVjls8650i9KMUw1VTsLYLRMway/kP+owzFrQD4FX7eDv93KYaoKJQKuEfeirr+hmQGq2Awq/pmkQCgZg5kU7LHx4Z7oGBckMTjvsv4FA3nZAHRYOG3emLczB+NUrAHRjthFR2xEwxmHhOJiebSrgj4t2D2/o2VQZClgoFNpw8ybNipK9pj6CRcI/IsObvOSWZMC8B8/1MtcGlsHiYB/8etLGy6RJxzVdJl70XbCfYTL0JEbQ/bmQc/fh2phMTYDvfgtEFwNJQevGDEm+jszhkKal4GeuImXrDpWXGeRDe7jpDsy5O2F5fHRLkHDKCEsnSuV9+lv+6ag4qiEZEaIgYAEO280SEKusVJa4+/sMcZhusN9Qo9q9wOruYOLgdIV0FXfFiYMwCvn6OjLgUWmsOuFFpUx2LTP5bbF7oJb/650yCey38+Xn1Fj0ZYzBnq3KVghZtgBxCIWJjzMBhfOpzZZWlEWbGWUnuewXxCjNEXYC0jxBGFMAPsrWg62FLpfpfv4Dgxw3gx1MXU8AAAAASUVORK5CYII="></a>
+            <a href="http://kshitijiitkgp.quora.com/" target="_blank"><!-- quora -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAD00lEQVQ4T31UbWxTVRh+3nNvv8a6ZWupTKdihGVqSGRjmLBoLJ0SSGpmRpsoiUTRkUWQ6RQCiUicSvyYGWAiGk0QnTErumVOf2gQsyWKYSKog6i08iEO2dZ2Jay97b33eHrxXtpJdn/d87zv+7wf53kP4RrfSGu9rXyy7EEmSc3EUQ/iVYYbpzEOjOjgfT2Rg/07AHVmOM0ETrUEmhmjbmJ087WSmZiua6cF8aaFkUMDhX4WochMp8JNb8pE7bMRzbRpXO+6tffgc4JIUAgS0yEaCnQzxjYVBRDBsfA2OBbUgmx2qBfOI/3LUejTly03Vee4lFa+qxscbrQIoy3+FibLBwrJXIvqULluI2zzbgB00RzXQZIMnlUwNdCL5Gc9yKkq4ukshBVOmXbW9Q9vo95QyL4E8SgxVm0SlixZBl/HC6J+QjKyH1ODIpcILvWvgGfdU1fwrz7Hb2+9Dp0bnYKBq/JYppyiIf/DjMk9JhlzuVC9+0MwdxkuHx7CePdLRVPwiKpLlq/CdDqNs69uR+rYEcvuJGk3RcNNBxhRi4m6l6+Ep/Vp4/jPzm1IHx8pIrQ3LIN7/bNiBBzp0eOIvbzVstuIzlEs1HS6UCLeJ7eg9O6A4XSu7SFoiUkrICtmmb6uGre8ssfA9PgETm54xLKTaJti4YBCxOwm6tvciZK6u4zjmbVBcEUx/rOajngmC9njQc2e/QbGpxI40bbmagdCM/kKs6JCm4l613cYwzcqbA1DSyWRE5VNphVDaHNqbsf8HW9cSXImij+2biwYCeUJA2fFDd9oooUzvNC5Gamfj0K6Lwi5vAIX+z7B3OBqVD4QMtzHP34fFwc/vdoy11WxHYE+iVizibI5paje9QFYqRuXRr7HaOcW1Ly2F/L1IqcmVlfIBw4noGQw+pi4y/9kk4+XCedJ7O5aSWb7CuqGa/FSVLY/j0wuZww+KeRT1tAIyesz3EiMILb9GUzHfi8Mg52xvXTo3vnOm3wL/hTSmWdas5oGfVEDqh5tA6vwGBIp/P7qehFTPx4uwsSrpCUmcpXGLkdXB9YwiX2U/1fEbSbEzVocTIJjrs/YZe/9QZQ3rRKvGUf8yz783fOeReqQ2a76/qF263GIhZveVXT9iaSQRnE9RYXAuyKIikY/EsPfYOLrQcMoM3Zi6cDQHcY4THceCklHlLFfVR21xRSznxyEk1Fn1Z3hSCRbRGiG/RS8552Mrj3OhdpnpRLPj0uS3l48MLSh0O9/L3be+EOg1mN3+7pyKl+pcu4VfRjkYrV0iTAukfRFKpXq8H97LDkz6b+HTHAGq9uVNQAAAABJRU5ErkJggg==">
+            </a>
+    </div>
+<!-- ===================================================== -->
+<!-- ================The Social Ends==================== -->
+<!-- ===================================================== -->
+
+</div>
+</body>
+<script src="{% static 'js/background.js' %}"></script>
+<script type="text/javascript">
+startLoad();
+var imagesN = $("img").length;
+var rotateIntervl = setInterval(rotateClockWise, 5500);
+setInterval(sponsTick, 3500);
+
+</script>
+</html>

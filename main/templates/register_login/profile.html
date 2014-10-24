@@ -1,0 +1,79 @@
+{% load url from future %}
+{% load i18n %}
+{% load static%}
+
+{% block content %}
+<div class="reg_heading">
+    <img src="{% static 'images/spons/home.png' %}" alt="" class="home-login" onclick="closeLogin();" style="margin: 10px 10px; cursor:pointer; float:left;" />
+    <span style="font-size: 20px;">You are logged in.</span>
+    <div id="logout" class="user-logout-box" onclick="logout();">Logout</div>
+</div>
+<div id="profile_display" class="scroll">
+<div class="profile-section">
+    <div class="profile-wrap">
+        <div class="label">Username</div> 
+        <div class="profile-element">{{user.username}}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">Email</div> 
+        <div class="profile-element">{{user.email}}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">Password</div> 
+        <div class="profile-element">*****</div>
+    </div>
+</div>
+<div class="profile-section">
+    <div class="profile-wrap">
+        <div class="label">Name</div> 
+        <div class="profile-element">{{ user.first_name }}{{ user.last_name }}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">Gender</div> 
+        <div class="profile-element">{{ profile.gender }}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">Date Of Birth</div> 
+        <div class="profile-element">{{ profile.dateOfBirth }}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">Contact</div> 
+        <div class="profile-element">{{ profile.contact }}</div>
+    </div>
+</div>
+<div class="profile-section">
+    <div class="profile-wrap">
+        <div class="label">Country</div> 
+        <div class="profile-element">{{ profile.country }}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">State</div> 
+        <div class="profile-element">{{ profile.state }}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">Department</div> 
+        <div class="profile-element">{{ profile.department }}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label"><label for="id_firstname">Year</label></div> 
+        <div class="profile-element">{{ profile.year }}</div>
+    </div>
+</div>
+
+<div class="profile-section">
+    <div class="profile-wrap">
+        <div class="label">Institution</div> 
+        <div class="profile-element">{{ profile.institute }}</div>
+    </div>
+    <div class="profile-wrap">
+        <div class="label">Address</div> 
+        <div class="profile-element">{{ profile.address }}</div>
+    </div>
+    <div class="profile-wrap">
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+

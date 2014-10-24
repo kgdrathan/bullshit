@@ -1,0 +1,323 @@
+@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+
+*{
+    border: 0px;
+    margin: 0px;
+}
+
+html{
+    border: 0px;
+    margin: 0px;
+    height: 100%;
+    background: black;
+    color: white;
+}
+
+body, #event_container{
+    width: 100%;
+    min-height: 700px;
+    display: -webkit-box;
+    -webkit-box-pack: justify;
+    -webkit-box-orient: horizontal;
+    overflow: hidden;
+}
+
+#backg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #990;
+}
+
+#event_container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    overflow: auto;
+    max-height: 100%;
+}
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*-----------------Left pane CSS-------------------*/
+#left_pane{
+    -webkit-box-flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: justify;
+    max-width: 50px;
+
+}
+
+#top_line, #bot_line{
+    display: -webkit-box;
+    width:50%;
+    border-right: rgba(255, 0, 51,0.5) solid 1px;
+}
+
+#bot_line{margin-left:24px;}
+#bot_line_right{margin-left:10px;}
+.span{display:none;margin:25px;font-size:15px;font-family:arial;color:#767676}
+.spanR{display:none;margin-left:-10px;font-size:15px;font-family:arial;color:#767676}
+span{display:inline;}
+
+#top_line{margin-left:20px;
+    -webkit-box-flex: 1;
+    max-height:90px;
+    margin-bottom: 10px;
+    min-width: 17px;
+}
+
+#menu_title{
+    display: -webkit-box;
+    -webkit-box-flex: 2;
+    max-height: 125px;
+    -webkit-box-pack: end;
+    margin-right: -15px;
+}
+
+.img_title{
+    vertical-align: middle;
+    height: 100px;
+}
+
+#bot_line{
+    -webkit-box-flex: 2;
+    min-width: 17px;
+    max-height: 425px;
+    margin-top: 10px;
+    -webkit-box-orient: vertical;
+}
+
+.nav_li{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    -webkit-box-pack: end;
+    -webkit-box-align: center;
+    margin-right: 10 px;
+	margin-left:10px;
+	}
+
+.logo_container{
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border: solid black 2px;
+    box-shadow: rgb(218, 19, 59) 0px 0px 0px 2px;
+    background: -webkit-linear-gradient(#cc4434, #bc1e4e);
+    background: linear-gradient(#cc4434, #bc1e4e);
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+.change{background: #cdcdcd;}
+.changer{background: #cdcdcd;}
+.logo_img{
+    width: 20px;
+    height: 20px;
+}
+
+#bottom_space_left{
+    min-height: 20px;
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    border-right: rgba(255, 0, 51,0.5) solid 1px;
+    min-width: 17px;
+
+}
+
+
+
+/*------------------------------------------------*/
+
+
+#mid_container{
+    height: 85%;
+    display: -webkit-box;
+    -webkit-box-flex: 3;
+    -webkit-box-orient: vertical;
+    padding: 50px 50px;
+    max-width: 850px;
+}
+
+#event_name{
+    width: 100%;
+    //background: white;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-flex: 1;
+}
+
+#ev_title{
+    width: 100%;
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 50px;
+}
+
+#ev_oneliner{
+    width: 100%;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
+#event_details{
+    //background: green;
+    display: -webkit-box;
+    -webkit-box-flex: 8;
+    -webkit-box-orient: vertical;
+}
+
+#ev_topbar{
+    //background: red;
+    width: 100%;
+    //min-width: 200px;
+    height: 100px;
+    margin-top: 60px;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+
+
+#logo_spons{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    //background: brown;
+    height: 100%;
+}
+
+.spons_img_ev{
+    max-width: 200px;
+    max-height: 75px;
+}
+
+#ev_quote{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    //background: black;
+    height: 100%;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    -webkit-box-pack: end;
+    text-align: right;
+}
+
+#ev_tile_group{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+}
+
+#ev_desc{
+    width: 100%;
+    text-align: justify;
+    font-size: 18px;
+    height: 240px;
+    font-family: 'Abel', sans-serif;
+    overflow: auto;
+    padding: 5px;
+    margin-bottom: 10px;
+
+}
+
+.scroll::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3); 
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1);
+    background: rgba(255,255,255,.75) 
+}
+
+.ev_tile, .tile_img{
+    //display: -webkit-box;
+    //margin: 2px;
+    border: 1px white solid;
+    min-width: 208px;
+    height: 100px;
+}
+
+#right_pane{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: start;
+    max-width: 50px;
+
+}
+
+#home_button{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    max-height: 150px;
+    min-height: 50px;
+    margin-top: 50px;
+}
+
+#home_but{
+    margin-left: -15px;
+    width: 40px;
+    height: 40px;
+}
+
+#bot_line_right{
+    display: -webkit-box;
+    -webkit-box-flex: 2;
+    max-height: 300px;
+    margin-top: 10px;
+    -webkit-box-orient: vertical;
+    border-left: rgba(255, 0, 51,0.5) solid 1px;
+    border-top: rgba(255, 0, 51,0.5) solid 1px;
+    border-bottom: rgba(255, 0, 51,0.5) solid 1px;
+}
+
+.nav_li_right{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    -webkit-box-pack: start;
+    -webkit-box-align: center;
+    /*margin-right: -18px;*/
+}
+
+.logo_container_right{
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    border: solid black 2px;
+    box-shadow: rgb(218, 19, 59) 0px 0px 0px 2px;
+    background: -webkit-linear-gradient(#cc4434, #bc1e4e);
+    background: linear-gradient(#cc4434, #bc1e4e);
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    margin-left: -16px;
+}
+
+
+#bottom_space{
+    min-height: 20px;
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+}
+a{text-decoration:none;color:white;}

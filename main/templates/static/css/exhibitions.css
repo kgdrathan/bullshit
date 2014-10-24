@@ -1,0 +1,183 @@
+#exhibitions_container{
+    position: absolute;
+    top: 2060px;
+    width: 100%;
+    height: 680px;
+    background: #fff;
+    color: black;
+    min-width: 1200px;
+    overflow: hidden;
+}
+
+.exhi-sideline{
+    color: black;
+    position: relative;
+    width: 25px;
+    height: 80%;
+    top: 200px;
+    left: 66px;
+    border-left: 1px solid rgba(64, 131, 216, 0.5);
+
+}
+
+.exhi-sideline>img{
+    position: absolute;
+    top: -220px;
+    width: 25px;
+    margin-left: -13px;
+    height: 220px;
+}
+
+#desc_exhi {
+    position: absolute;
+    top: 15%;
+    left: 16%;
+    padding: 20px;
+    font-family: Trebuchet MS;
+    min-width: 960px;
+    width: 70%;
+    height: 230px;
+    font-size: 15px;
+    padding-top: 10px;
+    color: #000;
+    background: linear-gradient(180deg, rgba(65, 255, 255, 0.75), rgba(64, 131, 216, 0.5));
+}
+
+#desc_exhi_heading {
+    text-transform: uppercase;
+    font-size: 2em;
+    text-shadow: black 1px 1px 1px;
+    padding-top: 5px;
+}
+
+#exhi_nation{
+    display: -webkit-box;
+    display: -moz-box;
+
+}
+
+.flag{
+    width: 60px;
+    height: 40px;
+}
+
+#desc_exhi_write {
+    position: absolute;
+    top: 15%;
+    left: 28%;
+    width: 70%;
+    height: 100%;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding-top: 20px;
+    text-align: justify;
+}
+
+#images {
+    position: absolute;
+    top: 56%;
+    min-width: 850px;
+    width: 67%;
+    left: 10%;
+    height: 280px;
+}
+
+#exhi {
+    background-image: url(static/img/megashows/back.jpg);
+}
+
+.exhi_img {
+    border-top: 10px solid rgba(0,0,0,0.3);
+    border-left: 10px solid rgba(0,0,0,0.3);
+    border-right: 10px solid rgba(0,0,0,0.3);
+    border-bottom: 25px solid rgba(0,0,0,0.3);
+    border-radius: 2px;
+    /*box-shadow: 1px 1px 1px black;*/
+}
+
+.exhi_img_sel {
+    border-top: 10px solid rgba(64, 131, 216, 0.95);
+    border-left: 10px solid rgba(64, 131, 216, 0.95);
+    border-right: 10px solid rgba(64, 131, 216, 0.95);
+    border-bottom: 25px solid rgba(64, 131, 216, 0.95);
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px black;
+}
+.inner-image{
+	height: 200px;
+    width: 250px;
+    opacity: 0.9;
+}
+.inner-image:hover{
+    opacity: 1;
+}
+#bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 20%;
+    left: 19%;
+}
+#ex_img1 {
+    position: absolute;
+    top: 1%;
+    left: 12%;
+    z-index: 90;
+    cursor: pointer;
+}
+
+#ex_img2 {
+    position: absolute;
+    top: 3%;
+    left: 24%;
+    z-index: 80;
+    cursor: pointer;
+}
+
+#ex_img3 {
+    position: absolute;
+    top: 5%;
+    left: 36%;
+    z-index: 70;
+    cursor: pointer;
+}
+
+#ex_img4 {
+    position: absolute;
+    top: 7%;
+    left: 48%;
+    z-index: 60;
+    cursor: pointer;
+}
+
+#ex_img5 {
+    position: absolute;
+    top: 9%;
+    left: 60%;
+    z-index: 50;
+    cursor: pointer;
+}
+
+#ex_img6 {
+    position: absolute;
+    top: 11%;
+    left: 72%;
+    z-index: 40;
+    cursor: pointer;
+}
+
+#ex_img7 {
+    position: absolute;
+    top: 13%;
+    left: 84%;
+    z-index: 30;
+    cursor: pointer;
+}
+
+#ex_img8 {
+    position: absolute;
+    top:15%;
+    left: 96%;
+    z-index: 20;
+    cursor: pointer;
+}

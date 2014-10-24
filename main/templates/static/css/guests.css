@@ -1,0 +1,117 @@
+#guests_container {
+    position: absolute;
+    top: 3420px;
+    height: 680px;
+    width: 100%;
+    background: white;
+    min-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.gl_sideline {
+    position: absolute;
+    color: black;
+    width: 25px;
+    height: 80%;
+    top: 200px;
+    left: 66px;
+    border-left: 1px solid rgba(64, 131, 216, 0.5);
+}
+
+.gl_sideline>img {
+    position: absolute;
+    top: -200px;
+    width: 25px;
+    margin-left: -13px;
+}
+
+#main_gl {
+    margin-left: 100px;
+    display: flex;
+    max-width: 1000px;
+    flex-direction: column;
+    padding: 0px 50px 0px 50px;
+    flex-flow: row wrap;
+    margin-top: 20px;
+    /*margin-bottom: 50px;*/
+    font-family: Trebuchet MS;
+    height: 85%;
+}
+
+#gl_heading{
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+    max-height: 100px;
+    margin-bottom: 50px;
+}
+
+#desc_gl{
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    min-height: 200px;
+    color: #666;
+    margin-bottom: 20px;
+    /*transition: all 0.5s ease;*/
+}
+
+#tiles_gl{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    align-self: center;
+}
+
+.gl_tile{
+    cursor: pointer;
+    min-width: 200px;
+    height: 120px;
+    margin-bottom: 20px;
+    margin-left: 3px;
+}
+
+.gl_tile_img{
+    background-size: contain;
+    margin: 20px 70px;
+    height: 70px;
+    width: 60px;
+    border-radius: 5px;
+}
+
+.gl_tile_img p{
+    font-size: 17px;
+    width: 190px;
+    padding-top: 75px;
+    margin-left: -70px;
+    text-align: center;
+}
+
+.overlay_tile_gl{
+    color: #999;
+    position: absolute;
+    background: #eee;
+    width: 190px;
+    min-height: 50px;
+    text-align: center;
+    line-height: 1.25;
+    vertical-align: middle;
+    font-family: Trebuchet MS;
+    font-size: 20px;
+    transition: all 0.5s ease;
+    padding: 35px 0px;
+}
+
+.gl_tile:hover .overlay_tile_gl{
+    height: 0px;
+    opacity: 0;
+}
+
+/*.overlay_tile_gl:hover{
+    height: 0px;
+    opacity: 0;
+}*/
